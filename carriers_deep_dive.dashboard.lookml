@@ -43,15 +43,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
+    hidden_fields: []
+    y_axes: []
     listen:
       Carrier: carriers.nickname
       Minutes Delayed: flights.minutes_delayed
       Time of Day: flights.dep_hour_of_day
       Destination State: destination.state
-    row: 0
-    col: 0
-    width: 7
-    height: 7
+    row: 2
+    col: 1
+    width: 8
+    height: 3
   - title: "% Delays by Hour of Day"
     name: "% Delays by Hour of Day"
     model: faa
@@ -62,55 +64,62 @@
     sorts: [flights.dep_hour_of_day]
     limit: 500
     column_limit: 50
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
+    color_application:
+      collection_id: 5591d8d1-6b49-4f8e-bafa-b874d82f8eb7
+      palette_id: 18d0c733-1d87-42a9-934f-4ba8ef81d736
+      options:
+        steps: 5
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
+    y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: Count,
+            axisId: flights.flight_count}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
+        orientation: right, series: [{id: flights.percent_flights_delayed, name: "%\
+              \ Delayed", axisId: flights.percent_flights_delayed}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: true
     show_x_axis_ticks: true
-    x_axis_scale: auto
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    colors: ['palette: Mixed Dark']
+    series_types:
+      flights.percent_flights_delayed: line
+    point_style: none
+    series_colors: {}
+    series_labels:
+      flights.flight_count: Count
+      flights.percent_flights_delayed: "% Delayed"
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
     ordering: none
     show_null_labels: false
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    colors: ['palette: Mixed Dark']
-    series_colors: {}
-    series_labels:
-      flights.flight_count: Count
-      flights.percent_flights_delayed: "% Delayed"
-    y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: Count,
-            axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 109}],
-        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 106},
-      {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
-            name: "% Delayed", axisId: flights.percent_flights_delayed, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 125}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml,
-        __LINE_NUM: 122}]
-    series_types:
-      flights.percent_flights_delayed: line
+    hidden_fields: []
     listen:
       Carrier: carriers.nickname
       Minutes Delayed: flights.minutes_delayed
       Time of Day: flights.dep_hour_of_day
       Destination State: destination.state
-    row: 0
-    col: 7
-    width: 9
-    height: 7
+    row: 2
+    col: 9
+    width: 14
+    height: 9
   - title: Most Common Routes
     name: Most Common Routes
     model: faa
@@ -165,15 +174,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
+    hidden_fields: []
+    y_axes: []
     listen:
       Carrier: carriers.nickname
       Minutes Delayed: flights.minutes_delayed
       Time of Day: flights.dep_hour_of_day
       Destination State: destination.state
-    row: 7
-    col: 0
-    width: 12
-    height: 7
+    row: 11
+    col: 1
+    width: 11
+    height: 8
   - title: Count of Flights by Distance
     name: Count of Flights by Distance
     model: faa
@@ -186,6 +197,14 @@
     column_limit: 50
     value_labels: legend
     label_type: labPer
+    inner_radius: 50
+    colors: ['palette: Mixed Dark']
+    color_application:
+      collection_id: 5591d8d1-6b49-4f8e-bafa-b874d82f8eb7
+      palette_id: 18d0c733-1d87-42a9-934f-4ba8ef81d736
+      options:
+        steps: 5
+    series_colors: {}
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -211,17 +230,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-    colors: ['palette: Mixed Dark']
-    series_colors: {}
+    hidden_fields: []
+    y_axes: []
     listen:
       Carrier: carriers.nickname
       Minutes Delayed: flights.minutes_delayed
       Time of Day: flights.dep_hour_of_day
       Destination State: destination.state
-    row: 0
-    col: 16
+    row: 5
+    col: 1
     width: 8
-    height: 7
+    height: 6
   - title: Routes with Highest Delays
     name: Routes with Highest Delays
     model: faa
@@ -278,20 +297,30 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
+    hidden_fields: []
+    y_axes: []
     listen:
       Carrier: carriers.nickname
       Minutes Delayed: flights.minutes_delayed
       Time of Day: flights.dep_hour_of_day
       Destination State: destination.state
-    row: 7
+    row: 11
     col: 12
-    width: 12
-    height: 7
+    width: 11
+    height: 8
+  - name: "<strong> Carrier Deep Dive </strong>"
+    type: text
+    title_text: "<strong> Carrier Deep Dive </strong>"
+    subtitle_text: How is this carrier performing overall?
+    row: 0
+    col: 1
+    width: 22
+    height: 2
   filters:
   - name: Carrier
     title: Carrier
     type: field_filter
-    default_value: ''
+    default_value: Southwest
     allow_multiple_values: true
     required: false
     model: faa

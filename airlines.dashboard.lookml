@@ -20,7 +20,7 @@
     type: text
     title_text: Delay Deep Dive
     subtitle_text: Which flights are most likely to be delayed?
-    row: 15
+    row: 13
     col: 0
     width: 24
     height: 2
@@ -74,7 +74,7 @@
     row: 2
     col: 5
     width: 6
-    height: 6
+    height: 4
   - title: Avg Distance Travelled (Miles)
     name: Avg Distance Travelled (Miles)
     model: faa
@@ -125,7 +125,7 @@
     row: 2
     col: 11
     width: 5
-    height: 6
+    height: 4
   - title: Average Flight Length (min)
     name: Average Flight Length (min)
     model: faa
@@ -178,7 +178,7 @@
     row: 2
     col: 0
     width: 5
-    height: 6
+    height: 4
   - title: Flights per Day
     name: Flights per Day
     model: faa
@@ -237,7 +237,7 @@
     row: 2
     col: 16
     width: 8
-    height: 6
+    height: 4
   - title: Longest Routes in Lower 48 (Min)
     name: Longest Routes in Lower 48 (Min)
     model: faa
@@ -311,7 +311,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 8
+    row: 6
     col: 0
     width: 8
     height: 7
@@ -379,7 +379,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 8
+    row: 6
     col: 8
     width: 8
     height: 7
@@ -432,7 +432,7 @@
       Destination City: destination.city_full
       Month: flights.dep_month
       Year: flights.dep_year
-    row: 8
+    row: 6
     col: 16
     width: 8
     height: 7
@@ -472,14 +472,12 @@
     colors: ['palette: Mixed Dark']
     series_colors: {}
     y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: 1
-              - Flights Count, axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 508}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml,
-        __LINE_NUM: 505}, {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
-            name: 1 - Flights Percent Flights Delayed, axisId: flights.percent_flights_delayed,
-            __FILE: faa/text.dashboard.lookml, __LINE_NUM: 524}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 521}]
+              - Flights Count, axisId: flights.flight_count}], showLabels: true, showValues: true,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
+            name: 1 - Flights Percent Flights Delayed, axisId: flights.percent_flights_delayed}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     series_labels:
       flights.flight_count: Count of Flights
       flights.percent_flights_delayed: "% Delayed"
@@ -492,7 +490,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 17
+    row: 15
     col: 0
     width: 8
     height: 6
@@ -539,14 +537,12 @@
       flights.flight_count: Count
     series_types: {}
     y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: Count,
-            axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 603}],
-        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 600},
-      {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
-            name: Percent Flights Delayed, axisId: flights.percent_flights_delayed,
-            __FILE: faa/text.dashboard.lookml, __LINE_NUM: 619}], showLabels: true,
+            axisId: flights.flight_count}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
+        orientation: right, series: [{id: flights.percent_flights_delayed, name: Percent
+              Flights Delayed, axisId: flights.percent_flights_delayed}], showLabels: true,
         showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 616}]
+        type: linear}]
     listen:
       Minutes for Delay: flights.minutes_delayed
       Origin City: origin.city_full
@@ -554,7 +550,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 17
+    row: 15
     col: 16
     width: 8
     height: 6
@@ -595,14 +591,12 @@
     show_silhouette: false
     totals_color: "#808080"
     y_axes: [{label: '', orientation: left, series: [{id: flights.percent_flights_delayed,
-            name: flights Percent Flights Delayed, axisId: flights.percent_flights_delayed,
-            __FILE: faa/text.dashboard.lookml, __LINE_NUM: 690}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 687}, {label: !!null '',
-        orientation: right, series: [{id: flights.flight_count, name: flights Count,
-            axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 706}],
+            name: flights Percent Flights Delayed, axisId: flights.percent_flights_delayed}],
         showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 703}]
+        tickDensityCustom: 5, type: linear}, {label: !!null '', orientation: right,
+        series: [{id: flights.flight_count, name: flights Count, axisId: flights.flight_count}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     series_types: {}
     colors: ['palette: Mixed Dark']
     series_colors: {}
@@ -613,7 +607,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 23
+    row: 21
     col: 0
     width: 16
     height: 6
@@ -654,14 +648,12 @@
     colors: ['palette: Mixed Dark']
     series_colors: {}
     y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: 1
-              - Flights Count, axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 780}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml,
-        __LINE_NUM: 777}, {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
-            name: 1 - Flights Percent Flights Delayed, axisId: flights.percent_flights_delayed,
-            __FILE: faa/text.dashboard.lookml, __LINE_NUM: 796}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 793}]
+              - Flights Count, axisId: flights.flight_count}], showLabels: true, showValues: true,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
+            name: 1 - Flights Percent Flights Delayed, axisId: flights.percent_flights_delayed}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     series_labels:
       flights.flight_count: Count of Flights
       flights.percent_flights_delayed: "% Delayed"
@@ -674,7 +666,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 23
+    row: 21
     col: 16
     width: 8
     height: 6
@@ -716,15 +708,12 @@
     colors: ['palette: Mixed Dark']
     series_colors: {}
     y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: Count
-              of Flights, axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 875}], showLabels: true, showValues: true, maxValue: !!null '',
-        minValue: !!null '', unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 872}, {label: !!null '',
-        orientation: right, series: [{id: flights.percent_flights_delayed, name: "%\
-              \ Delayed", axisId: flights.percent_flights_delayed, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 893}], showLabels: true, showValues: true, maxValue: !!null '',
-        minValue: !!null '', unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 890}]
+              of Flights, axisId: flights.flight_count}], showLabels: true, showValues: true,
+        maxValue: !!null '', minValue: !!null '', unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}, {label: !!null '', orientation: right,
+        series: [{id: flights.percent_flights_delayed, name: "% Delayed", axisId: flights.percent_flights_delayed}],
+        showLabels: true, showValues: true, maxValue: !!null '', minValue: !!null '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     series_labels:
       flights.flight_count: Count of Flights
       flights.percent_flights_delayed: "% Delayed"
@@ -739,7 +728,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 29
+    row: 27
     col: 0
     width: 24
     height: 7
@@ -783,14 +772,12 @@
       Yes - flights.flight_count: Delayed
       flights.flight_count: Count
     y_axes: [{label: '', orientation: left, series: [{id: flights.flight_count, name: 1
-              - Flights, axisId: flights.flight_count, __FILE: faa/text.dashboard.lookml,
-            __LINE_NUM: 974}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: faa/text.dashboard.lookml,
-        __LINE_NUM: 971}, {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
-            name: Percent Flights Delayed, axisId: flights.percent_flights_delayed,
-            __FILE: faa/text.dashboard.lookml, __LINE_NUM: 990}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear, __FILE: faa/text.dashboard.lookml, __LINE_NUM: 987}]
+              - Flights, axisId: flights.flight_count}], showLabels: true, showValues: true,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: right, series: [{id: flights.percent_flights_delayed,
+            name: Percent Flights Delayed, axisId: flights.percent_flights_delayed}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     series_types:
       flights.percent_flights_delayed: line
     listen:
@@ -800,7 +787,7 @@
       Month: flights.dep_month
       Year: flights.dep_year
       Carrier: carriers.nickname
-    row: 17
+    row: 15
     col: 8
     width: 8
     height: 6
