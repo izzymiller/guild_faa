@@ -125,8 +125,8 @@ view: accidents {
   }
 
   dimension: number_of_fatalities {
-    type: string
-    sql: ${TABLE}.number_of_fatalities ;;
+    type: number
+    sql: cast(${TABLE}.number_of_fatalities as NUMERIC);;
   }
 
   dimension: number_of_minor_injuries {
