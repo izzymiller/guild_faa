@@ -3,6 +3,7 @@ connection: "lookerdata"
 # include all the views
 include: "*.view"
 include: "*.dashboard"
+include: "/j_fry/j_fry_explores.explore.lkml"
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
