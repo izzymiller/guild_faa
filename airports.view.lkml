@@ -38,6 +38,12 @@ view: airport {
     sql: ${TABLE}.longitude ;;
   }
 
+  dimension: airport_location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: city {
     hidden: yes
     type: string
