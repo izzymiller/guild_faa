@@ -46,11 +46,18 @@ view: flights {
       year
     ]
     sql: ${TABLE}.dep_time ;;
+    convert_tz: no
   }
 
   dimension: dep_delay {
     type: number
     sql: ${TABLE}.dep_delay ;;
+  }
+
+  dimension: dep_delay_tier {
+    type: tier
+    tiers: [0,15,30,45,60,90,120,240,480,720,1440]
+    sql: ${dep_delay} ;;
   }
 
   dimension_group: arr {
@@ -69,6 +76,7 @@ view: flights {
       year
     ]
     sql: ${TABLE}.arr_time ;;
+    convert_tz: no
   }
 
   dimension: origin {
@@ -94,6 +102,7 @@ view: flights {
   #####################
 
   parameter: minutes_delayed {
+    description: "minimum minutes delay for a flight to be considered 'delayed'"
     type: number
     default_value: "15"
   }
