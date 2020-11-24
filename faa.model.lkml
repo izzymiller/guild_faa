@@ -1,13 +1,17 @@
-connection: "red_flight"
+connection: "looker-private-demo"
 # include all views in this project
 include: "*.view"
 # include all dashboards in this project
 # include: "*.dashboard"
 # persist_for: "3 hours"
 
-explore: airports {}
+explore: airports {
+  hidden: yes
+
+}
 
 explore: flights {
+  hidden: yes
   description: "Start here for information about flights!"
   join: carriers {
     type: left_outer

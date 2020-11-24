@@ -1,4 +1,4 @@
-connection: "red_flight"
+connection: "looker-private-demo"
 # include all views in this project
 include: "*.view"
 
@@ -328,7 +328,9 @@ include: "*.view"
 # }
 
 
-explore: fruit_basket {}
+explore: fruit_basket {
+  hidden: yes
+}
 view: fruit_basket {
   sql_table_name: public.fruit_basket ;;
 
