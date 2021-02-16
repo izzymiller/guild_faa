@@ -1,5 +1,6 @@
 view: carriers {
-  sql_table_name: public.carriers ;;
+  sql_table_name: faa.carriers ;;
+
 
   dimension: code {
     primary_key: yes
@@ -13,12 +14,12 @@ view: carriers {
   }
 
   dimension: nickname {
+    label: "Carrier Name"
     type: string
     sql: ${TABLE}.nickname ;;
   }
 
-  measure: count {
+  measure: count_carriers {
     type: count
-    drill_fields: [name, nickname]
   }
 }
