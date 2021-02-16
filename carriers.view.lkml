@@ -1,7 +1,5 @@
 view: carriers {
   sql_table_name: faa.carriers ;;
-
-
   dimension: code {
     primary_key: yes
     type: string

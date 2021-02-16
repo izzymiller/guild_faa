@@ -44,7 +44,6 @@ explore: flights {
 
 }
 
-
 ### Caching Logic
 
 persist_with: once_weekly
