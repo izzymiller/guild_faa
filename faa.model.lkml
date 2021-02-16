@@ -1,4 +1,4 @@
-connection: "looker-private-demo"
+connection: "sandbox"
 
 # include all the views
 include: "*.view"
