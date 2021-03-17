@@ -18,13 +18,13 @@ explore: flights {
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 ;;
 
   join: origin {
-    from: airport
+    from: airports
     relationship: many_to_one
     sql_on: ${flights.origin} = ${origin.code} ;;
   }
 
   join: destination {
-    from: airport
+    from: airports
     relationship: many_to_one
     sql_on: ${flights.destination} = ${destination.code} ;;
   }
@@ -34,7 +34,17 @@ explore: flights {
     sql_on: ${flights.carrier} = ${carriers.code} ;;
   }
 
+  join: aircraft {
+    type: left_outer
+    sql_on: ${flights.tail_num} = ${aircraft.tail_num} ;;
+    relationship: many_to_one
+  }
 
+  join: aircraft_flight_facts {
+    type: left_outer
+    sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
+    relationship: one_to_one
+    }
 
   join: summary_airport {
     view_label: "Flights"
@@ -42,7 +52,14 @@ explore: flights {
     sql_on: ${flights.origin} = ${summary_airport.origin} ;;
   }
 
+    join: aircraft_models {
+      sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
+      relationship: many_to_one
+    }
+
 }
+
+
 
 ### Caching Logic
 

@@ -19,5 +19,6 @@ view: carriers {
 
   measure: count_carriers {
     type: count
+    drill_fields: [name, nickname]
   }
 }
