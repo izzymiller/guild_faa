@@ -21,6 +21,9 @@ explore: flights {
     filters: [flights.dep_year: "2005"]
   }
 
+  sql_always_having: ${flight_count} >=5000 ;;
+
+
   join: origin {
     from: airport
     relationship: many_to_one
