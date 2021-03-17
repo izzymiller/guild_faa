@@ -17,6 +17,10 @@ explore: flights {
 
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 ;;
 
+  always_filter: {
+    filters: [flights.dep_year: "2005"]
+  }
+
   join: origin {
     from: airport
     relationship: many_to_one
