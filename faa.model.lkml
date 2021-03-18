@@ -19,12 +19,14 @@ explore: flights {
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 ;;
 
   join: origin {
+    view_label: "Flight Origin"
     from: airport
     relationship: many_to_one
     sql_on: ${flights.origin} = ${origin.code} ;;
   }
 
   join: destination {
+    view_label: "Flight Destination"
     from: airport
     relationship: many_to_one
     sql_on: ${flights.destination} = ${destination.code} ;;
