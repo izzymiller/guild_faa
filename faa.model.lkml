@@ -4,6 +4,8 @@ connection: "sandbox"
 include: "*.view"
 # include: "*.dashboard"
 
+label: "Federal Aviation"
+
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
@@ -12,6 +14,7 @@ datagroup: faa_default_datagroup {
 persist_with: faa_default_datagroup
 
 explore: flights {
+  label: "Historical Flight Data"
   view_name: flights
   view_label: "Flights"
 
