@@ -15,6 +15,7 @@ explore: flights {
   label: "Historical Flight Data"
   view_name: flights
   view_label: "Flights"
+  description: "Start here for information about flights! Includes flight, carrier, origin, destination, and duration."
 
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 ;;
 
