@@ -139,7 +139,7 @@ view: flights {
   #####################
 
   dimension: destination_location {
-    label: "Destination"
+    view_label: "Flight Destination"
     type: location
     sql_latitude:${destination.latitude} ;;
     sql_longitude:${destination.longitude} ;;
@@ -147,7 +147,7 @@ view: flights {
   }
 
   dimension: origin_location {
-    label: "Origin"
+    view_label: "Flight Origin"
     type: location
     sql_latitude:${origin.latitude} ;;
     sql_longitude:${origin.longitude} ;;
