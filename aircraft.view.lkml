@@ -1,5 +1,5 @@
 view: aircraft {
-  sql_table_name: public.aircraft ;;
+  sql_table_name: faa.aircraft ;;
 
   dimension: tail_num {
     type: string
@@ -124,7 +124,13 @@ view: aircraft {
 
   dimension: year_built {
     type: date_year
-    sql: TO_DATE(CAST(${TABLE}.year_built AS text), 'YYYY');;
+    sql: TIMESTAMP(PARSE_DATE('%Y',CAST(${TABLE}.year_built AS STRING))) ;;
+  }
+
+  dimension: year_built_raw {
+    type: number
+    hidden:  yes
+    sql: ${TABLE}.year_built ;;
   }
 
   dimension: zip {

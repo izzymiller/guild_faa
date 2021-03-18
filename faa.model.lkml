@@ -15,7 +15,7 @@ explore: flights {
   view_name: flights
   view_label: "Flights"
 
-  sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 ;;
+  sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
 
   join: origin {
     from: airports
@@ -40,11 +40,11 @@ explore: flights {
     relationship: many_to_one
   }
 
-  join: aircraft_flight_facts {
-    type: left_outer
-    sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
-    relationship: one_to_one
-    }
+  # join: aircraft_flight_facts {
+  #   type: left_outer
+  #   sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
+  #   relationship: one_to_one
+  #   }
 
   join: summary_airport {
     view_label: "Flights"
