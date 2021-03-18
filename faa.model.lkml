@@ -12,7 +12,6 @@ datagroup: faa_default_datagroup {
 persist_with: faa_default_datagroup
 
 explore: flights {
-  group_label: "test"
   view_name: flights
   view_label: "Flights"
 
