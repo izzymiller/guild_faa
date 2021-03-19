@@ -3,7 +3,7 @@ connection: "sandbox"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
-label: "Federal Aviation"
+
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
@@ -72,4 +72,4 @@ datagroup: once_yearly {
   sql_trigger: SELECT extract(year from current_date()) ;;
 }
 
-#label: "FAA"
+label: "FAA"
