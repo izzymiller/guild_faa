@@ -12,6 +12,7 @@ datagroup: faa_default_datagroup {
 persist_with: faa_default_datagroup
 
 explore: flights {
+  label: "Historical Flights"
   view_name: flights
   view_label: "Flights"
 
