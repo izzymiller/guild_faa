@@ -12,22 +12,37 @@ datagroup: faa_default_datagroup {
 persist_with: faa_default_datagroup
 
 explore: flights {
-  view_name: flights
-  view_label: "Flights"
+  # view_name: flights
+  # view_label: "Flights"
 
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
 
-  join: origin {
-    from: airports
-    relationship: many_to_one
-    sql_on: ${flights.origin} = ${origin.code} ;;
-  }
+# FROM parameter using under JOIN
+join: origin {
+  from: airports
+  type: left_outer
+  relationship: many_to_one
+  sql_on: ${origin.code} = ${flights.origin} ;;
+}
 
-  join: destination {
-    from: airports
-    relationship: many_to_one
-    sql_on: ${flights.destination} = ${destination.code} ;;
-  }
+join: destination {
+  from: airports
+  type: left_outer
+  relationship: many_to_one
+  sql_on: ${destination.code} = ${flights.destination};;
+}
+
+  # join: origin {
+  #   from: airports
+  #   relationship: many_to_one
+  #   sql_on: ${flights.origin} = ${origin.code} ;;
+  # }
+
+  # join: destination {
+  #   from: airports
+  #   relationship: many_to_one
+  #   sql_on: ${flights.destination} = ${destination.code} ;;
+  # }
 
   join: carriers  {
     relationship: many_to_one
