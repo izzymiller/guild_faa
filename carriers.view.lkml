@@ -21,4 +21,15 @@ view: carriers {
     type: count
     drill_fields: [name, nickname]
   }
+
+  dimension: full_name {
+    type:  string
+    sql:  ${name} || '-' || ${nickname};;
+  }
+
+  dimension: is_first {
+    type: yesno
+    sql: ${code} = 'sadas' ;;
+    description: "asdlkajs"
+  }
 }

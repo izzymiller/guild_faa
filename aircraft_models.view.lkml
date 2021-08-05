@@ -70,4 +70,14 @@ view: aircraft_models {
     type: count
     drill_fields: []
   }
+
+  measure: lucas_sum {
+    type: sum
+    sql: ${weight} ;;
+  }
+
+  measure: lucas_avg {
+    type: average
+    sql: ${weight} ;;
+  }
 }

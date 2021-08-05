@@ -123,4 +123,9 @@ view: airports {
       value: "Yes"
     }
   }
+
+  measure: rng_count_dist {
+    type: count_distinct
+    sql: ${city} ;;
+  }
 }
