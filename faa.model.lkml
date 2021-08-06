@@ -60,12 +60,6 @@ explore: flights {
 }
 
 explore: accidents {
-  join: carriers {
-    type: inner
-    relationship: many_to_one
-    sql_on: ${accidents.air_carrier} = ${carriers.name};;
-  }
-
   join: airports {
     type: inner
     relationship: many_to_one
