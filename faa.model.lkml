@@ -59,6 +59,20 @@ explore: flights {
 
 }
 
+explore: accidents {
+  join: carriers {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${accidents.air_carrier} = ${carriers.code};;
+  }
+
+  join: airports {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${accidents.airport_code} = ${airports.code} ;;
+  }
+}
+
 
 
 ### Caching Logic
