@@ -63,7 +63,7 @@ explore: accidents {
   join: carriers {
     type: inner
     relationship: many_to_one
-    sql_on: ${accidents.air_carrier} = ${carriers.code};;
+    sql_on: ${accidents.air_carrier} = ${carriers.name};;
   }
 
   join: airports {
