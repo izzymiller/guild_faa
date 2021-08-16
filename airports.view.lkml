@@ -96,6 +96,7 @@ view: airports {
     sql: ${TABLE}.state ;;
   }
 
+
   measure: count {
     type: count
     drill_fields: [id, full_name]
