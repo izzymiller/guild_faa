@@ -16,7 +16,10 @@ view: aircraft {
     type: string
     sql: ${TABLE}.address2 ;;
   }
-
+  dimension: address3 {
+    type: string
+    sql: ${TABLE}.address3 ;;
+  }
   dimension_group: air_worth {
     type: time
     timeframes: [time, date, week, month, year, raw]
