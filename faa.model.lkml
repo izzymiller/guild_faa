@@ -88,7 +88,7 @@ datagroup: once_yearly {
 }
 
 # Testing as part of the training
-# Place in `faa` model
+# Aggregate table check
 
 explore: +flights {
   aggregate_table: rollup__carrier {
@@ -102,5 +102,14 @@ explore: +flights {
     }
   }
 }
+
+# Explore tables sample
+explore: +flights {
+      query: Count_by_Carrier {
+      dimensions: [carrier]
+      measures: [flight_count]
+    }
+}
+
 
 label: "FAA"
