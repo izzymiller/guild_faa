@@ -87,5 +87,20 @@ datagroup: once_yearly {
   sql_trigger: SELECT extract(year from current_date()) ;;
 }
 
+# Testing as part of the training
+# Place in `faa` model
+
+explore: +flights {
+  aggregate_table: rollup__carrier {
+    query: {
+      dimensions: [carrier]
+      measures: [flight_count]
+    }
+
+    materialization: {
+      datagroup_trigger: once_weekly
+    }
+  }
+}
 
 label: "FAA"
