@@ -106,7 +106,7 @@ explore: +flights {
 # Explore tables sample
 explore: +flights {
       query: Count_by_Carrier {
-      label: "This is sample for explore queries"
+      label: "Carrier Count"
       description: "This will summarize # of flights"
       dimensions: [carrier]
       measures: [flight_count]
