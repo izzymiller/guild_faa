@@ -110,6 +110,7 @@ explore: +flights {
       description: "This will summarize # of flights"
       dimensions: [carrier]
       measures: [flight_count]
+      filters: [flights.carrier: "DL,UA,AA"]
     }
 }
 
