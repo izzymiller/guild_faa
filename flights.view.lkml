@@ -134,6 +134,24 @@ view: flights {
     drill_fields: [drill*]
   }
 
+  measure:flights_delayed_per  {
+    type: number
+    sql: ${count_delayed_flights}/${flight_count} ;;
+    value_format_name: percent_2
+  }
+
+  measure: percent_flights_delayed_1 {
+    type: number
+    description: "Count of Delayed Flights out of Total Flights"
+    sql: ${percent_flights_delayed_clean} ;;
+    html:
+    <div style="line-height:80%; text-align: left;">
+    <font size="5"><strong>{{ count_delayed_flights._rendered_value }}<strong></font><font size="2"> Delays </font><br>
+    <strong><font size="4" color="#00ff55">{{ flights_delayed_per._rendered_value }} vs Total </font></strong>;;
+    value_format_name: percent_2
+    drill_fields: [drill*]
+  }
+
   #####################
   ## Distance
   #####################

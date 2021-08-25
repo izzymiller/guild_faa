@@ -210,12 +210,21 @@ view: inbound_cpt {
   }
 
   measure: sum_inbound_html {
-    sql: 1;;
+    sql: ${sum_inbound}/1000;;
     html:
       <div style="line-height:80%; text-align:center;">
-      <font size="7">{{ inbound_cpt.sum_inbound._value | url_encode }}</font></h6><br>
-      <strong><font size="6" color="#00b300">&nbsp; &nbsp;▲ </font> <font size="2" color="#00b300">  {{ inbound_cpt.per_tw_vs_lw._rendered_value }} vs LY</font>
+      <font size="5">{{ inbound_cpt.sum_inbound_html._value | url_encode }}K</font></h6><br>
+      <strong><font size="3" color="#00b300">&nbsp; &nbsp;▲ </font> <font size="2" color="#00b300">  {{ inbound_cpt.per_tw_vs_lw._rendered_value }} vs LY</font>
       </div>
       ;;
+  }
+
+  measure: Sum_inbound_sample {
+    type: sum
+    sql: ${inbound_value} ;;
+    filters: [year: "2021"]
+    html:
+    <font size="5">{{ inbound_cpt.Sum_inbound_sample._value | url_encode }}</font></h6><br>
+    ;;
   }
 }

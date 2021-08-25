@@ -498,4 +498,84 @@ measure: Week_Vs_Avg_CY {
 
     ;;
   }
+
+
+  measure: Final_Table_1 {
+    sql: 1 ;;
+    html:
+    <table style="width:100%; height:100%; align:left ; line-height:80%;">
+    <tr style="width:100%; height=100%; border:1px solid black">
+      <td style="width:150px; height=5%; ">
+         <img src="https://cdn2.iconfinder.com/data/icons/complete-medical-healthcare-icons-for-apps-and-web/128/heartbeat2-2-256.png"
+          width="30%" height="30%">
+        <font size="4">Safety</font>
+      </td>
+      <td style="width:200px; height=5%;  color:#4db8ff">
+       <font size="5">WK 26</font>
+      </td>
+      <td style="width:200px; height=5%;  color:#4db8ff">
+       <font size="5">YTD </font>
+      </td>
+      <td style="width:200px; height=5%; ">
+       <font size="5"color="#4db8ff">●</font> <font size="3">CY</font>  &nbsp;
+      <font size="5" color="#ff8533">●</font> <font size="3">LY or PLAN</font>
+      </td>
+    </tr>
+    <tr style="border-collapse:collapse;">
+      <td style="text-align: left;">
+      <font size="3"> OIR </font>
+      </td>
+       <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+       <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+    </tr>
+    <tr>
+       <td style="text-align: left;">
+        <font size="3"> OIR </font>
+       </td>
+       <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+        <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+    </tr>
+    <tr>
+       <td style="text-align: left;">
+        <font size="3"> OIR </font>
+       </td>
+       <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+        <td style="text-align: center;">
+        <font size="3">{{l0_safety.Avg_Week._rendered_value}}</font>
+        <font size="3"color="#ff4d4d">{{l0_safety.Per_Weekly_Growth._rendered_value}}</font>
+        <font size="3">vs LY</font>
+        <font size="5"color="#ff4d4d">▲</font>
+       </td>
+       <td>
+        <img src="https://chart.googleapis.com/chart?chs=200x50&cht=ls&chxt=x,y&chxr=0,31,34,1&chds=a&chd=t:10,50,30,90">
+       </td>
+    </tr>
+    </table>
+    ;;
+  }
 }
