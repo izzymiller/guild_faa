@@ -208,4 +208,14 @@ view: inbound_cpt {
     </div>
     ;;
   }
+
+  measure: sum_inbound_html {
+    sql: 1;;
+    html:
+      <div style="line-height:80%; text-align:center;">
+      <font size="7">{{ inbound_cpt.sum_inbound._value | url_encode }}</font></h6><br>
+      <strong><font size="6" color="#00b300">&nbsp; &nbsp;▲ </font> <font size="2" color="#00b300">  {{ inbound_cpt.per_tw_vs_lw._rendered_value }} vs LY</font>
+      </div>
+      ;;
+  }
 }
