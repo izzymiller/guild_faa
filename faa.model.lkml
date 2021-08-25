@@ -89,3 +89,9 @@ datagroup: once_yearly {
 
 
 label: "FAA"
+
+explore: l0_safety{}
+explore: turnover_cal {}
+explore: inbound_cpt {}
+explore: actuals_vs_plan {}
+explore: sample {}
