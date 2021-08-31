@@ -10,6 +10,11 @@ view: aircraft {
   dimension: address1 {
     type: string
     sql: ${TABLE}.address1 ;;
+    link: {
+      label: "Website"
+      url: "http://www.google.com/search?q={{ value | encode_uri }}+clothes&btnI"
+      icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
+    }
   }
 
   dimension: address2 {
