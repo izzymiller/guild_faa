@@ -1,5 +1,5 @@
-- dashboard: airline
-  title: Airline
+- dashboard: air
+  title: air
   layout: newspaper
   embed_style:
     background_color: ''
@@ -77,8 +77,8 @@
     height: 4
   - title: Avg Distance Travelled (Miles)
     name: Avg Distance Travelled (Miles)
-    model: faa
-    explore: flights
+    model: flights_list
+    explore: flights_list
     type: single_value
     fields: [flights.average_distance]
     limit: 500
@@ -128,8 +128,8 @@
     height: 4
   - title: Average Flight Length (min)
     name: Average Flight Length (min)
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: single_value
     fields: [flights.average_flight_length]
     filters:
@@ -181,8 +181,8 @@
     height: 4
   - title: Flights per Day
     name: Flights per Day
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_bar
     fields: [flights.is_flight_delayed, flights.flight_count]
     pivots: [flights.is_flight_delayed]
@@ -317,8 +317,8 @@
     height: 7
   - title: 100 Most Common Routes in US
     name: 100 Most Common Routes in US
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_map
     fields: [flights.origin_location, flights.destination_location, flights.flight_count]
     filters:
@@ -385,8 +385,8 @@
     height: 7
   - title: Market Share by Carrier by Year
     name: Market Share by Carrier by Year
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_area
     fields: [flights.dep_year, carriers.nickname, flights.flight_count]
     pivots: [carriers.nickname]
@@ -438,8 +438,8 @@
     height: 7
   - title: "% Delay by Carrier"
     name: "% Delay by Carrier"
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_column
     fields: [flights.flight_count, flights.percent_flights_delayed, carriers.nickname]
     sorts: [flights.flight_count desc]
@@ -496,8 +496,8 @@
     height: 6
   - title: Share by Destination (Top 5)
     name: Share by Destination (Top 5)
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_pie
     fields: [destination.city_full, flights.flight_count]
     sorts: [flights.flight_count desc]
@@ -556,8 +556,8 @@
     height: 6
   - title: "% of Delays by Flight Length"
     name: "% of Delays by Flight Length"
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_donut_multiples
     fields: [flights.flight_count, flights.is_flight_delayed, flights.flight_length_tier]
     pivots: [flights.is_flight_delayed]
@@ -613,8 +613,8 @@
     height: 6
   - title: "% Delay by Time of Day"
     name: "% Delay by Time of Day"
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_column
     fields: [flights.dep_hour_of_day, flights.flight_count, flights.percent_flights_delayed]
     fill_fields: [flights.dep_hour_of_day]
@@ -734,8 +734,8 @@
     height: 7
   - title: Top Origin Airports
     name: Top Origin Airports
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     type: looker_column
     fields: [flights.flight_count, origin.city_full, flights.percent_flights_delayed]
     sorts: [flights.flight_count desc]
@@ -798,8 +798,8 @@
     default_value: '15'
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: flights.minutes_delayed
   - name: Origin City
@@ -808,8 +808,8 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: origin.city_full
   - name: Destination City
@@ -818,8 +818,8 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: destination.city_full
   - name: Month
@@ -828,8 +828,8 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: flights.dep_month
   - name: Year
@@ -838,8 +838,8 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: flights.dep_year
   - name: Carrier
@@ -848,7 +848,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: faa
-    explore: flights
+    model: faa_list
+    explore: flights_list
     listens_to_filters: []
     field: carriers.nickname
