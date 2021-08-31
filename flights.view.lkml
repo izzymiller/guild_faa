@@ -38,6 +38,11 @@ view: flights {
     type: string
     sql: ${TABLE}.carrier ;;
     drill_fields: [origin, destination]
+    link: {
+      label: "Website"
+      url: "http://www.google.com/search?q={{ value | encode_uri }}"
+      icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
+    }
   }
 
   dimension_group: dep {
