@@ -10,10 +10,9 @@ datagroup: faa_default_datagroup {
 }
 
 persist_with: faa_default_datagroup
-
-explore: flights_list {
+explore: flights_list{
   view_name: flights
-  view_label: "Flights"
+  view_label: "Flights_valist"
 
 
   join: origin {
