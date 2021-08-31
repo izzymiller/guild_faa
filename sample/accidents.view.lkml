@@ -12,6 +12,11 @@ view: accidents {
   dimension: accident_number {
     type: string
     sql: ${TABLE}.accident_number ;;
+    link: {
+      label: "Website"
+      url: "http://www.google.com/search?q={{ value | encode_uri }}+clothes&btnI"
+      icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
+    }
   }
 
   dimension: air_carrier {
