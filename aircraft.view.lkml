@@ -142,4 +142,9 @@ view: aircraft {
     type: count
     drill_fields: [name]
   }
+  measure: countPlus1 {
+    type: sum
+    sql:  1+1 ;;
+
+  }
 }
