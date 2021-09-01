@@ -68,7 +68,7 @@ persist_with: once_weekly
 ### PDT Timeframes
 
 datagroup: once_daily {
-  max_cache_age: "24 hours"
+  max_cache_age: "12 hours"
   sql_trigger: SELECT current_date() ;;
 }
 
