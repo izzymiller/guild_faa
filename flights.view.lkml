@@ -279,7 +279,6 @@ view: flights {
     #label_from_parameter: timeframe
     sql:
             CASE
-             --WHEN {% parameter timeframe %} = 'Daily' THEN ${dep_date}
              WHEN {% parameter timeframe %} = 'Last Full Month' THEN ${dep_month}
              WHEN {% parameter timeframe %} = 'Quarter to Date' THEN ${dep_quarter}
              WHEN {% parameter timeframe %} = 'Year to Date' THEN ${dep_year}
