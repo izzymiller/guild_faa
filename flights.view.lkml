@@ -44,6 +44,10 @@ view: flights {
       month_num,
       week_of_year,
       year
+      # adding to check liquid variable operation
+      ,quarter
+      ,fiscal_quarter
+      ,fiscal_year
     ]
     sql: ${TABLE}.dep_time ;;
   }
@@ -67,6 +71,10 @@ view: flights {
       month_num,
       week_of_year,
       year
+      # adding to check liquid variable operation
+      ,quarter
+      ,fiscal_quarter
+      ,fiscal_year
     ]
     sql: ${TABLE}.arr_time ;;
   }
@@ -264,5 +272,18 @@ view: flights {
     allowed_value: { value: "Quarter to Date" }
     allowed_value: { value: "Year to Date" }
     allowed_value: { value: "Fiscal Year to Date" }
+  }
+
+  dimension: axis_label {
+    label: "Axis Label"
+    #label_from_parameter: timeframe
+    sql:
+            CASE
+             WHEN {% parameter timeframe %} = 'Daily' THEN ${dep_date}
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN ${dep_month}
+             WHEN {% parameter timeframe %} = 'Quarter to Date' THEN ${dep_quarter}
+             WHEN {% parameter timeframe %} = 'Year to Date' THEN ${dep_year}
+             WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN ${dep_fiscal_year}
+            END ;;
   }
 }
