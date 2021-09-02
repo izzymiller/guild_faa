@@ -88,13 +88,4 @@ view: ontime {
     drill_fields: []
   }
 
-  # Parameter and liquid variable check
-  parameter: timeframe {
-    type: string
-    allowed_value: { value: "Daily" }
-    allowed_value: { value: "Last Full Month" }
-    allowed_value: { value: "Quarter to Date" }
-    allowed_value: { value: "Year to Date" }
-    allowed_value: { value: "Fiscal Year to Date" }
-  }
 }
