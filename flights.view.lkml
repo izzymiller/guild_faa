@@ -278,8 +278,12 @@ view: flights {
     label: "Axis Label"
     #label_from_parameter: timeframe
     sql:
-            CASE
-             WHEN {% parameter timeframe %} = 'Last Full Month' THEN to_string(${dep_month})
+CASE
+             WHEN {% parameter timeframe %} = 'Daily' THEN cast(${dep_date} as string)
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast(${dep_month} as string)
+             WHEN {% parameter timeframe %} = 'Quarter to Date' THEN cast(${dep_quarter} as string)
+             WHEN {% parameter timeframe %} = 'Year to Date' THEN cast(${dep_year} as string)
+             WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN cast(${dep_fiscal_year} as string)
             END ;;
   }
 }
