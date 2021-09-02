@@ -279,8 +279,6 @@ view: flights {
     #label_from_parameter: timeframe
     sql:
             CASE
-             WHEN {% parameter timeframe %} = 'Last Full Month' THEN ${dep_month}
-             WHEN {% parameter timeframe %} = 'Quarter to Date' THEN ${dep_quarter}
              WHEN {% parameter timeframe %} = 'Year to Date' THEN ${dep_year}
              WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN ${dep_fiscal_year}
             END ;;
