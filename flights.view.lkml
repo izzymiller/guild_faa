@@ -256,4 +256,13 @@ view: flights {
     sql:TO_BASE64(SHA1(${pilot_ssn})) ;;
   }
 
+# Parameter and Liquid variable check
+  parameter: timeframe {
+    type: string
+    allowed_value: { value: "Daily" }
+    allowed_value: { value: "Last Full Month" }
+    allowed_value: { value: "Quarter to Date" }
+    allowed_value: { value: "Year to Date" }
+    allowed_value: { value: "Fiscal Year to Date" }
+  }
 }
