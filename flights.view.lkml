@@ -279,7 +279,7 @@ view: flights {
     #label_from_parameter: timeframe
     sql:
             CASE
-             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast(${dep_month} as string)
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN to_string(${dep_month})
             END ;;
   }
 }
