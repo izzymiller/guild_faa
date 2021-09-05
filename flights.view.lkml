@@ -286,4 +286,20 @@ CASE
              WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN cast(${dep_fiscal_year} as string)
             END ;;
   }
+
+  dimension: axis_label2 {
+    label_from_parameter: timeframe
+    sql:
+        {% if timeframe._parameter_value == 'Daily' %}
+          ${dep_date}
+        {% elsif timeframe._parameter_value == 'Last Full Month' %}
+          ${dep_month}
+        {% elsif timeframe._parameter_value == 'Quarter to Date' %}
+          ${dep_quarter}
+        {% elsif timeframe._parameter_value == 'Year to Date' %}
+          ${dep_year}
+        {% elsif timeframe._parameter_value == 'Fiscal Year to Date' %}
+          ${dep_fiscal_year}
+        {% endif %};;
+  }
 }
