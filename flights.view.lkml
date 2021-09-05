@@ -36,6 +36,12 @@ view: flights {
     }
   }
 
+  # Added as part of training
+  dimension: carrier_photo {
+    sql: ${TABLE}.carrier ;;
+    html: <img src="http://www.google.com/airlines/{{ value }}.jpg" /> ;;
+  }
+
   dimension_group: dep {
     type: time
     timeframes: [
