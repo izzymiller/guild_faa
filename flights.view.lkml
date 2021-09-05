@@ -276,7 +276,7 @@ view: flights {
 
   dimension: axis_label {
     label: "Axis Label"
-    #label_from_parameter: timeframe
+    label_from_parameter: timeframe
     sql:
 CASE
              WHEN {% parameter timeframe %} = 'Daily' THEN cast(${dep_date} as string)
@@ -291,7 +291,7 @@ CASE
     label_from_parameter: timeframe
     sql:
         {% if timeframe._parameter_value == 'Daily' %}
-          ${dep_date}
+          cast(${dep_date} as string)
         {% endif %};;
   }
 }
