@@ -303,7 +303,7 @@ CASE
     label_from_parameter: timeframe
     sql:
         {% if timeframe._parameter_value == 'Daily' %}
-          cast(${dep_date} as string)
+          dep_date
         {% endif %};;
   }
 }
