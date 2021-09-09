@@ -51,6 +51,11 @@ view: aircraft_models {
     sql: ${TABLE}.model ;;
   }
 
+  dimension: make_model {
+    type: string
+    sql:  concat(${manufacturer}, " ", ${model}) ;;
+  }
+
   dimension: seats {
     type: number
     sql: ${TABLE}.seats ;;
