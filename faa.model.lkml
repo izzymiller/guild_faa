@@ -13,7 +13,7 @@ persist_with: faa_default_datagroup
 
 explore: flights {
   view_name: flights
-  view_label: "Flights"
+  view_label: "Historical Flight Data"
 
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
 
@@ -88,4 +88,4 @@ datagroup: once_yearly {
 }
 
 
-label: "FAA"
+label: "Federal Aviation"
