@@ -73,12 +73,14 @@ view: flights {
 
   dimension: origin {
     type: string
+    label: "Flight Origin"
     sql: ${TABLE}.origin ;;
     drill_fields: [carrier, destination]
   }
 
   dimension: destination {
     type: string
+    label: "Flight Destination"
     sql: ${TABLE}.destination ;;
     drill_fields: [carrier, origin]
   }
