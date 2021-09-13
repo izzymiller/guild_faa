@@ -1,7 +1,7 @@
 connection: "sandbox"
 
 # include all the views
-include: "*.view"
+# include: "*.view"
 include: "*original_views/*.view"
 # include: "*.dashboard"
 
