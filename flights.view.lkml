@@ -306,7 +306,7 @@ view: flights {
     allowed_value: { value: "Case2" }
   }
 
-  dimension: axis_label2 {
+  dimension: axis_label2_L {
     label_from_parameter: sample
     sql:
         {% if sample._parameter_value == 'Case1' %}
@@ -315,4 +315,14 @@ view: flights {
           "Case2"
         {% endif %};;
   }
+
+  dimension: axis_label2_C {
+    label_from_parameter: sample
+    sql:
+    CASE
+    WHEN {% parameter sample %} = 'Case1' THEN "Case1"
+    WHEN {% parameter sample %} = 'Case2' THEN "Case2"
+    END ;;
+  }
+
 }
