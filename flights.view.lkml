@@ -309,8 +309,10 @@ view: flights {
   dimension: axis_label2 {
     label_from_parameter: sample
     sql:
-        {% if timeframe._parameter_value == 'Case1' %}
-          dep_date
+        {% if sample._parameter_value == 'Case1' %}
+          "Case1"
+        {% elsif sample._parameter_value == 'Case2' %}
+          "Case2"
         {% endif %};;
   }
 }
