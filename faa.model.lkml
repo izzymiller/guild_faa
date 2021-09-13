@@ -2,6 +2,7 @@ connection: "sandbox"
 
 # include all the views
 include: "*.view"
+include: "*original_views/*.view"
 # include: "*.dashboard"
 
 datagroup: faa_default_datagroup {
