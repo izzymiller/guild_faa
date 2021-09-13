@@ -309,9 +309,9 @@ view: flights {
   dimension: axis_label2_L {
     label_from_parameter: sample
     sql:
-        {% if sample._parameter_value == 'Case1' %}
+        {% if flights._sample == 'Case1' %}
           "Case1"
-        {% elsif sample._parameter_value == 'Case2' %}
+        {% elsif flights._sample == 'Case2' %}
           "Case2"
         {% endif %};;
   }
