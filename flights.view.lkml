@@ -299,6 +299,38 @@ view: flights {
             END ;;
   }
 
+  dimension: dep_month_name_appr {
+    sql:
+    case
+    when ${dep_month_num} = 1 then 'Jan'
+    when ${dep_month_num} = 2 then 'Feb'
+    when ${dep_month_num} = 3 then 'Mar'
+    when ${dep_month_num} = 4 then 'Apr'
+    when ${dep_month_num} = 5 then 'May'
+    when ${dep_month_num} = 6 then 'Jun'
+    when ${dep_month_num} = 7 then 'Jul'
+    when ${dep_month_num} = 8 then 'Aug'
+    when ${dep_month_num} = 9 then 'Sep'
+    when ${dep_month_num} = 10 then 'Oct'
+    when ${dep_month_num} = 11 then 'Nov'
+    when ${dep_month_num} = 12 then 'Dec'
+    end
+    ;;
+
+  }
+
+  dimension: axis_label_new {
+    label: "Axis Label"
+    label_from_parameter: timeframe
+    sql:
+            CASE
+             WHEN {% parameter timeframe %} = 'Daily' THEN cast(${dep_date} as string)
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast(${dep_year} as string)||" "||cast (${dep_month_name_appr} as string)
+             WHEN {% parameter timeframe %} = 'Quarter to Date' THEN cast(${dep_quarter} as string)
+             WHEN {% parameter timeframe %} = 'Year to Date' THEN cast(${dep_year} as string)
+             WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN cast(${dep_fiscal_year} as string)
+            END ;;
+  }
 
   parameter: sample {
     type: string
