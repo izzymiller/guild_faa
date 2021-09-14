@@ -320,12 +320,12 @@ view: flights {
   }
 
   dimension: axis_label_new {
-    label: "Axis Label"
+    label: "Axis Label_new"
     label_from_parameter: timeframe
     sql:
             CASE
              WHEN {% parameter timeframe %} = 'Daily' THEN cast(${dep_date} as string)
-             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast(${dep_year} as string)||" "||cast (${dep_month_name_appr} as string)
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast (${dep_month_name_appr} as string)||" "||right(cast(${dep_year} as string),2)
              WHEN {% parameter timeframe %} = 'Quarter to Date' THEN cast(${dep_quarter} as string)
              WHEN {% parameter timeframe %} = 'Year to Date' THEN cast(${dep_year} as string)
              WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN cast(${dep_fiscal_year} as string)
