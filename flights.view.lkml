@@ -316,7 +316,6 @@ view: flights {
     when ${dep_month_num} = 12 then 'Dec'
     end
     ;;
-
   }
 
   dimension: axis_label_new {
@@ -325,7 +324,7 @@ view: flights {
     sql:
             CASE
              WHEN {% parameter timeframe %} = 'Daily' THEN cast(${dep_date} as string)
-             WHEN {% parameter timeframe %} = 'Last Full Month' THEN cast (${dep_month_name_appr} as string)||" "||right(cast(${dep_year} as string),2)
+             WHEN {% parameter timeframe %} = 'Last Full Month' THEN ${dep_month_name_appr}||" "||right(cast(${dep_year} as string),2)
              WHEN {% parameter timeframe %} = 'Quarter to Date' THEN cast(${dep_quarter} as string)
              WHEN {% parameter timeframe %} = 'Year to Date' THEN cast(${dep_year} as string)
              WHEN {% parameter timeframe %} = 'Fiscal Year to Date' THEN cast(${dep_fiscal_year} as string)
