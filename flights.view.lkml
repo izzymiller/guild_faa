@@ -53,6 +53,10 @@ view: flights {
     sql: ${TABLE}.dep_delay ;;
   }
 
+dimension: overall_delay {
+  type: number
+  sql:  ${dep_delay}  ;;
+}
   dimension_group: arr {
     type: time
     timeframes: [
