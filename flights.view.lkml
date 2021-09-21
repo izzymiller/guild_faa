@@ -3,7 +3,7 @@ view: flights {
 
   #####################
   ## Original Columns
-  #####################
+  ###############
 
   dimension: id {
     hidden: yes
