@@ -3,6 +3,7 @@ connection: "sandbox"
 include:*.view              # include all views in the views/ folder in this project
 
 explore: flights {
+  from: flights
   view_label: "test_flight"
 
   join: aircraft {

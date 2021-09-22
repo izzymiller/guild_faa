@@ -13,7 +13,7 @@ persist_with: faa_default_datagroup
 
 explore: flights {
   view_name: flights
-  view_label: "Flights"
+  view_label: "Flight"
 
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
 
@@ -47,7 +47,7 @@ explore: flights {
   #   }
 
   join: summary_airport {
-    view_label: "Flights"
+    view_label: "Flight"
     relationship: many_to_one
     sql_on: ${flights.origin} = ${summary_airport.origin} ;;
   }
