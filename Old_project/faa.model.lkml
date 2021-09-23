@@ -16,8 +16,8 @@ explore: flights {
   view_label: "Flights"
 
   conditionally_filter: {
-    filters: [destination.city: "Austin"]
-    unless: [destination.facility_type]
+    filters: [destination.city: "Austin",destination.county: "Lancaster"]
+    unless: [destination.state]
   }
 
   join: origin {
