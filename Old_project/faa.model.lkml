@@ -15,7 +15,10 @@ explore: flights {
   view_name: flights
   view_label: "Flights"
 
-  sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
+  conditionally_filter: {
+    filters: [destination.city: "Austin"]
+    unless: [destination.facility_type]
+  }
 
   join: origin {
     from: airports
