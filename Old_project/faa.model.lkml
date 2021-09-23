@@ -15,15 +15,15 @@ explore: flights {
   view_name: flights
   view_label: "Flights"
 
-  conditionally_filter: {
-    filters: [destination.city: "Austin",destination.county: "Travis"]
-    unless: [destination.state]
-  }
 
   join: origin {
     from: airports
     relationship: many_to_one
     sql_on: ${flights.origin} = ${origin.code} ;;
+  }
+  conditionally_filter: {
+    filters: [destination.city: "Austin",destination.county: "Travis"]
+    unless: [destination.state]
   }
 
   join: destination {
