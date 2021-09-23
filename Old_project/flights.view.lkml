@@ -54,7 +54,7 @@ view: flights {
   }
 
 dimension: overall_delay {
-  label: "OD"
+  view_label: "Overall Flights Delay"
   type: number
   sql:  ${dep_delay}  ;;
 }
