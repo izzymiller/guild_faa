@@ -22,7 +22,7 @@ explore: flights {
     sql_on: ${flights.origin} = ${origin.code} ;;
   }
   conditionally_filter: {
-    filters: [destination.city: "Austin",destination.county: "Travis"]
+    filters: [destination.city: "Austin",carriers.name: "Airtran"]
     unless: [destination.state]
   }
 
