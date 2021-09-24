@@ -15,7 +15,7 @@ explore: ontime {
   view_name: ontime
   view_label: "Ontime"
 }
-
+explore: test {}
 explore: flights {
   view_name: flights
   view_label: "Flights"
