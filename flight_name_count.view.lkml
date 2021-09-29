@@ -1,7 +1,7 @@
 # If necessary, uncomment the line below to include explore_source.
 include: "faa.model.lkml"
 
-view: add_a_unique_name_1632917565 {
+view: flight_name_count {
   derived_table: {
     explore_source: flights {
       column: nickname { field: carriers.nickname }
