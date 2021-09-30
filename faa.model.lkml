@@ -11,6 +11,11 @@ datagroup: faa_default_datagroup {
 
 persist_with: faa_default_datagroup
 
+explore: ontime {
+  view_name: ontime
+  view_label: "ONTIME"
+}
+
 explore: flights {
   view_name: flights
   view_label: "Flights"
