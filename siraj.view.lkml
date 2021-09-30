@@ -6,5 +6,9 @@ dimension: id {
   type: number
   sql: ${TABLE}.id ;;
 }
+measure: count {
+  type: number
+  sql: ${id} ;;
+}
 
   }
