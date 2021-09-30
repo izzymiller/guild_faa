@@ -3,7 +3,7 @@ connection: "sandbox"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
-
+explore: carriers {}
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
