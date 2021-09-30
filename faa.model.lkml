@@ -3,8 +3,7 @@ connection: "sandbox"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
-explore: carriers {}
-explore: derived_table {}
+
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
@@ -19,9 +18,9 @@ explore: flights {
   sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
 
   join: origin {
-    from: airports
-    relationship: many_to_one
-    sql_on: ${flights.origin} = ${origin.code} ;;
+  from: airports
+  relationship: many_to_one
+  sql_on: ${flights.origin} = ${origin.code} ;;
   }
 
   join: destination {
