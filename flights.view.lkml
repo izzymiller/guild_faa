@@ -103,6 +103,10 @@ view: flights {
     sql: ${dep_delay} >= {% parameter minutes_delayed %} ;;
     drill_fields: [route, distance_tiers]
   }
+  measure: count {
+    type: number
+    sql: ${id} ;;
+  }
 
   measure: count_delayed_flights {
     type: count
