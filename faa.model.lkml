@@ -4,6 +4,7 @@ connection: "sandbox"
 include: "*.view"
 # include: "*.dashboard"
 explore: carriers {}
+explore: derived_table {}
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
