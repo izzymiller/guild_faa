@@ -11,8 +11,6 @@ datagroup: faa_default_datagroup {
 
 persist_with: faa_default_datagroup
 explore: flight_name_count {}
-explore: flights_by_day {}
-
 explore: flights {
   view_name: flights
   view_label: "Flights"
@@ -24,11 +22,6 @@ explore: flights {
     relationship: many_to_one
     sql_on: ${flights.origin} = ${origin.code} ;;
   }
- join: flights_by_day {
-   type: left_outer
-   relationship: many_to_one
-   sql_on:${flights.id} = ${flights_by_day.id2}  ;;
- }
   join: destination {
     from: airports
     relationship: many_to_one
