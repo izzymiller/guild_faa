@@ -94,7 +94,9 @@ label: "FAA"
 # 2) Create 5 measures and 5 dimensions  per view which will be part of Explore .
 
 #explore1-explore with single view
-explore: carriers {}
+explore: carriers {
+  view_label: "sample1_carriers"
+}
 explore: airports { #explore2-explore with single join
   join:carriers {
     type:left_outer
