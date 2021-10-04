@@ -95,18 +95,14 @@ label: "FAA"
 
 #explore1-explore with single view
 explore: carriers {}
-#explore2-explore with single join
-explore: airports {
+explore: airports { #explore2-explore with single join
   join:carriers {
     type:left_outer
     sql_on: ${airports.state} = ${carriers.code} ;;
     relationship: many_to_one
   }
 }
-
-#explore3-explore with multiple joins
-explore: aircraft{
-
+explore: aircraft{ #explore3-explore with multiple joins
   join: aircraft_flight_facts{
     type: left_outer
     sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
@@ -118,5 +114,4 @@ explore: aircraft{
     sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
     relationship: one_to_many
   }
-
 }
