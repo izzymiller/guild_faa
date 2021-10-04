@@ -3,7 +3,7 @@ connection: "sandbox"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
-label: "Fedaral Aviation"
+
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
@@ -89,3 +89,34 @@ datagroup: once_yearly {
 
 
 label: "FAA"
+
+# 1)Build three different Explores.
+# 2) Create 5 measures and 5 dimensions  per view which will be part of Explore .
+
+#explore1-explore with single view
+explore: carriers {}
+#explore2-explore with single join
+explore: airports {
+  join:carriers {
+    type:left_outer
+    sql_on: ${airports.state} = ${carriers.code} ;;
+    relationship: many_to_one
+  }
+}
+
+#explore3-explore with multiple joins
+explore: aircraft{
+
+  join: aircraft_flight_facts{
+    type: left_outer
+    sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
+    relationship: one_to_many
+  }
+
+  join:aircraft_models{
+    type: left_outer
+    sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
+    relationship: one_to_many
+  }
+
+}
