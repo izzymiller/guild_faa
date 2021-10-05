@@ -88,4 +88,4 @@ datagroup: once_yearly {
 }
 
 
-label: "FAA"
+label: "Flights"
