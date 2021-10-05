@@ -46,7 +46,10 @@ view: airports {
     type: string
     sql: ${TABLE}.county ;;
   }
-
+dimension: america {
+  type: string
+  sql: ${TABLE}.america ;;
+  }
   dimension: elevation {
     hidden: yes
     type: number
