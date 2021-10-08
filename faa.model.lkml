@@ -55,7 +55,7 @@ explore: flights {
   #   }
 
   join: summary_airport {
-    view_label: "Flights"
+    view_label: "Summary Airport"
     relationship: many_to_one
     sql_on: ${flights.origin} = ${summary_airport.origin} ;;
   }
