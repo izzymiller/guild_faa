@@ -1,6 +1,14 @@
 connection: "sandbox"
 
-include: "airports.view.lkml"               # include all views in the views/ folder in this project
+include: "aircraft.view.lkml"
+include: "airports.view.lkml"
+include: "flights.view.lkml"
+
+explore:  aircraft {}
+explore:  airports {}
+explore:  flights {}
+
+# include all views in the views/ folder in this project
 # include: "/**/view.lkml"                   # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
