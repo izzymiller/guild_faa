@@ -75,6 +75,11 @@ view: flights {
     sql: ${TABLE}.flight_time ;;
   }
 
+  dimension: flight_info {
+    type: string
+    sql: ${TABLE}.flight_num''${TABLE}.id2 ;;
+  }
+
   dimension: id2 {
     type: number
     sql: ${TABLE}.id2 ;;
