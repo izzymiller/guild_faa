@@ -1,5 +1,7 @@
 connection: "sandbox"
 
+label: "MBU test label for FAA"
+
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
