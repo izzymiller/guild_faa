@@ -86,6 +86,4 @@ datagroup: once_yearly {
   max_cache_age: "9000 hours"
   sql_trigger: SELECT extract(year from current_date()) ;;
 }
-
-
-label: "FAA"
+explore:tbl1  {}
