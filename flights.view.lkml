@@ -113,6 +113,13 @@ view: flights {
     drill_fields: [drill*]
   }
 
+  measure: count_arr_delayed_flights {
+    type: number
+    sql: 1.0 * ${count_delayed_flights} - nullif(${dep_delay},0) ;;
+    value_format_name: decimal_1
+    drill_fields: [drill*]
+      }
+
   measure: percent_flights_delayed_clean {
     type: number
     sql: 1.0 * ${count_delayed_flights} / nullif(${flight_count},0) ;;
