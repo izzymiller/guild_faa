@@ -120,6 +120,13 @@ view: flights {
     drill_fields: [drill*]
   }
 
+  measure: average_flights_delayed_clean {
+    type: average
+    value_format_name: decimal_2
+    drill_fields: [drill*]
+  }
+
+
   measure: percent_flights_delayed {
     type: number
     description: "Count of Delayed Flights out of Total Flights"
