@@ -6,6 +6,10 @@ view: aircraft {
     primary_key: yes
     sql: ${TABLE}.tail_num ;;
   }
+  dimension: sales {
+    type: number
+    sql: ${TABLE}.sales;;
+  }
 
   dimension: address1 {
     type: string
