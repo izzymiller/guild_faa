@@ -58,3 +58,4 @@
 
   embed_style:
     background_color: "#E2EF0B"
+
