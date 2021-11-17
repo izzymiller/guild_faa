@@ -2,7 +2,7 @@ connection: "sandbox"
 
 # include all the views
 include: "*.view"
-# include: "*.dashboard"
+include: "*.dashboard"
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
@@ -31,7 +31,8 @@ explore: flights {
 
   join: carriers  {
     relationship: many_to_one
-    sql_on: ${flights.carrier} = ${carriers.code} ;;
+    sql_on: ${flights.carrier} = ${carriers.code};;
+
   }
 
   join: aircraft {
@@ -59,6 +60,7 @@ explore: flights {
 
 }
 
+explore: accident_per_country {}
 
 
 ### Caching Logic
