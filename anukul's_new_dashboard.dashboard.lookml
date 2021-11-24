@@ -3,15 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:
-  - title: <html>
-      <head>
-         <title>HTMLFont size</title>
-      </head>
-      <body>
-         <h1 style="color:red;font-size:40px;">Heading</h1>
-         <p style="color:blue;font-size:18px;">delay_by_carrier</p>
-      </body>
-      </html>
+  - title: delay_by_carrier
     name: delay_by_carrier
     model: faa
     explore: flights
