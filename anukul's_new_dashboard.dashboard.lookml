@@ -4,7 +4,7 @@
   preferred_viewer: dashboards-next
   elements:
   - title: delay_by_carrier
-    name: delay_by_carrier
+    name: <p>delay_by_carrier</p>
     model: faa
     explore: flights
     type: looker_column
