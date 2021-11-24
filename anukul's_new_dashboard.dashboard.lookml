@@ -31,7 +31,7 @@
     legend_position: center
     point_style: none
     show_value_labels: false
-    label_density: 50
+    label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
     ordering: none
@@ -50,7 +50,7 @@
     table_theme: white
     enable_conditional_formatting: false
     header_text_alignment: left
-    header_font_size: 12
+    header_font_size: 20
     rows_font_size: 12
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
