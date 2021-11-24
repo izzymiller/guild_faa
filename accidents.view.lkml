@@ -103,7 +103,7 @@ view: accidents {
   }
 
   dimension: map_location {
-    description: "Latitude and Longitude location of the accident, with a link to the map!"
+    description: "Latitude as well as Longitude location of the accident, with a link to the map!"
     type: location
     sql_latitude: CASE WHEN ${TABLE}.latitude != '' THEN ${TABLE}.latitude::float ELSE NULL END ;;
     sql_longitude: CASE WHEN ${TABLE}.longitude != '' THEN ${TABLE}.longitude::float ELSE NULL END ;;
