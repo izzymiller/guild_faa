@@ -55,7 +55,3 @@
     col: 0
     width: 24
     height: 8
-
-  embed_style:
-    background_color: "#E2EF0B"
-
