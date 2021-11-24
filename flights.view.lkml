@@ -122,7 +122,7 @@ view: flights {
 
   measure: percent_flights_delayed {
     type: number
-    description: "Count of Delayed Flights out of Total Flights"
+    description: "Count of flights that were delayed out of Total Flights"
     sql: ${percent_flights_delayed_clean} ;;
     html: {{ rendered_value }} = {{ count_delayed_flights._rendered_value }} Delays / {{ flight_count._rendered_value }} Total ;;
     value_format_name: percent_2
