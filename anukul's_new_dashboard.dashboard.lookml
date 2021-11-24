@@ -3,7 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:
-  - title: delay_by_carrier
+  - title: <p style="color:blue;font-size:18px;">delay_by_carrier</p>
     name: delay_by_carrier
     model: faa
     explore: flights
