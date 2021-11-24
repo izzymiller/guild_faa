@@ -12,7 +12,7 @@ view: carriers {
   }
 
   dimension: nickname {
-    label: "Nameo f Carrier"
+    label: "Name of Carrier"
     type: string
     sql: ${TABLE}.nickname ;;
   }
