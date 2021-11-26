@@ -1,5 +1,5 @@
 - dashboard: anukuls_new_dashboard
-  title: anukul_jena_new_dashboard
+  title: <p style="color:red">anukul_jena_new_dashboard.</p>
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:
