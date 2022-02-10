@@ -1,11 +1,6 @@
 view: aircraft {
-  sql_table_name: faa.aircraft ;;
-
-  dimension: tail_num {
-    type: string
-    primary_key: yes
-    sql: ${TABLE}.tail_num ;;
-  }
+  sql_table_name: `vert-298006.faa.aircraft`
+    ;;
 
   dimension: address1 {
     type: string
@@ -19,7 +14,14 @@ view: aircraft {
 
   dimension_group: air_worth {
     type: time
-    timeframes: [time, date, week, month, year, raw]
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.air_worth_date ;;
@@ -52,7 +54,14 @@ view: aircraft {
 
   dimension_group: cert_issue {
     type: time
-    timeframes: [time, date, week, month, year, raw]
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.cert_issue_date ;;
@@ -86,7 +95,14 @@ view: aircraft {
 
   dimension_group: last_action {
     type: time
-    timeframes: [time, date, week, month, year, raw]
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.last_action_date ;;
@@ -122,14 +138,13 @@ view: aircraft {
     sql: ${TABLE}.status_code ;;
   }
 
-  dimension: year_built {
-    type: date_year
-    sql: TIMESTAMP(PARSE_DATE('%Y',CAST(${TABLE}.year_built AS STRING))) ;;
+  dimension: tail_num {
+    type: string
+    sql: ${TABLE}.tail_num ;;
   }
 
-  dimension: year_built_raw {
+  dimension: year_built {
     type: number
-    hidden:  yes
     sql: ${TABLE}.year_built ;;
   }
 

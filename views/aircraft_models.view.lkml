@@ -1,11 +1,6 @@
 view: aircraft_models {
-  sql_table_name: faa.aircraft_models ;;
-
-  dimension: aircraft_model_code {
-    primary_key: yes
-    type: string
-    sql: ${TABLE}.aircraft_model_code ;;
-  }
+  sql_table_name: `vert-298006.faa.aircraft_models`
+    ;;
 
   dimension: aircraft_category_id {
     type: number
@@ -15,6 +10,11 @@ view: aircraft_models {
   dimension: aircraft_engine_type_id {
     type: number
     sql: ${TABLE}.aircraft_engine_type_id ;;
+  }
+
+  dimension: aircraft_model_code {
+    type: string
+    sql: ${TABLE}.aircraft_model_code ;;
   }
 
   dimension: aircraft_type_id {
@@ -34,16 +34,7 @@ view: aircraft_models {
 
   dimension: manufacturer {
     type: string
-    sql:
-    case when
-    ${TABLE}.manufacturer LIKE 'AIRBUS%' THEN 'AIRBUS'
-    ELSE
-    ${TABLE}.manufacturer
-    end
-
-
-
-    ;;
+    sql: ${TABLE}.manufacturer ;;
   }
 
   dimension: model {

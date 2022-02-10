@@ -1,7 +1,8 @@
 view: carriers {
-  sql_table_name: faa.carriers ;;
+  sql_table_name: `vert-298006.faa.carriers`
+    ;;
+
   dimension: code {
-    primary_key: yes
     type: string
     sql: ${TABLE}.code ;;
   }
@@ -12,12 +13,11 @@ view: carriers {
   }
 
   dimension: nickname {
-    label: "Carrier Name"
     type: string
     sql: ${TABLE}.nickname ;;
   }
 
-  measure: count_carriers {
+  measure: count {
     type: count
     drill_fields: [name, nickname]
   }

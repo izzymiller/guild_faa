@@ -1,5 +1,6 @@
-view: ontime {
-  sql_table_name: faa.ontime ;;
+view: flights_dk {
+  sql_table_name: `vert-298006.faa.flights_dk`
+    ;;
 
   dimension: arr_delay {
     type: number
@@ -8,7 +9,15 @@ view: ontime {
 
   dimension_group: arr {
     type: time
-    timeframes: [time, date, week, month]
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.arr_time ;;
   }
 
@@ -29,7 +38,15 @@ view: ontime {
 
   dimension_group: dep {
     type: time
-    timeframes: [time, date, week, month]
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.dep_time ;;
   }
 
