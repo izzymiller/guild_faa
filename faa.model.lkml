@@ -1,7 +1,7 @@
 connection: "sandbox"
 
 include: "/views/*.view.lkml"
-include: "/test111.dashboard.lookml"
+
 # include all views in the views/ folder in this project
 # include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
@@ -24,6 +24,7 @@ label: "Flight Model"
 
 explore: flights {
   label: "Flight data"
+  fields: [airports.city, airports.state,airports.map_location,id2,median_dep_delay,avg_taxi_out,count]
   description: "Here you will find data for flights and airports"
   join: airports {
     type: left_outer

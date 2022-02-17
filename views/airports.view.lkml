@@ -106,11 +106,13 @@ view: airports {
 
   dimension: latitude {
     type: number
+    hidden: yes
     sql: ${TABLE}.latitude ;;
   }
 
   dimension: longitude {
     type: number
+    hidden: yes
     sql: ${TABLE}.longitude ;;
   }
 
@@ -145,6 +147,8 @@ view: airports {
   }
 
   dimension: map_location {
+    label: "Airport_location"
+    description: "Location of the Airport (LAT-LONG)"
     type: location
     sql_latitude: ${latitude} ;;
     sql_longitude: ${longitude} ;;
