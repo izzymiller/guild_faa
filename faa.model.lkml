@@ -24,7 +24,6 @@ label: "Flight Model"
 
 explore: flights {
   label: "Flight data"
-  fields: [airports.city, airports.state,airports.map_location,id2,median_dep_delay,avg_taxi_out,count]
   description: "Here you will find data for flights and airports"
   join: airports {
     type: left_outer
