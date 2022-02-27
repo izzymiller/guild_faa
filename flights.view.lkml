@@ -256,4 +256,46 @@ view: flights {
     sql:TO_BASE64(SHA1(${pilot_ssn})) ;;
   }
 
+  # New Code added
+  dimension: cancelled {
+    view_label: "Flights Details"
+    type: yesno
+    sql: ${TABLE}.cancelled ;;
+  }
+
+  dimension: arrival_status {
+    view_label: "Flights Details"
+    case: {
+      when: {
+        sql: ${TABLE}.cancelled='Y' ;;
+        label: "Cancelled"
+      }
+
+      when: {
+        sql: ${TABLE}.diverted='Y' ;;
+        label: "Diverted"
+      }
+
+      when: {
+        sql: ${TABLE}.arr_delay > 60 ;;
+        label: "Very Late"
+      }
+
+      when: {
+        sql: ${TABLE}.arr_delay BETWEEN -10 and 10 ;;
+        label: "OnTime"
+      }
+
+      when: {
+        sql: ${TABLE}.arr_delay > 10 ;;
+        label: "Late"
+      }
+
+      else: "Early"
+    }
+  }
+
+
+
+
 }

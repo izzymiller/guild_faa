@@ -5,7 +5,7 @@ view: airports {
     primary_key: yes
     type: number
     hidden: yes
-    value_format: "decimal_0"
+    value_format_name: decimal_0
     sql: ${TABLE}.id ;;
   }
 
@@ -45,12 +45,13 @@ view: airports {
   dimension: county {
     type: string
     sql: ${TABLE}.county ;;
+    drill_fields: [city]
   }
 
   dimension: elevation {
     hidden: yes
     type: number
-    value_format: "decimal_0"
+    value_format_name: decimal_0
     sql: ${TABLE}.elevation ;;
   }
 
@@ -94,6 +95,7 @@ view: airports {
     type: string
     map_layer_name: us_states
     sql: ${TABLE}.state ;;
+    drill_fields: [county]
   }
 
   measure: count {
