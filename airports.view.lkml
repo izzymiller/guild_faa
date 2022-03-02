@@ -4,8 +4,7 @@ view: airports {
   dimension: id {
     primary_key: yes
     type: number
-    hidden: yes
-    value_format: "decimal_0"
+    hidden:yes
     sql: ${TABLE}.id ;;
   }
 
@@ -50,7 +49,6 @@ view: airports {
   dimension: elevation {
     hidden: yes
     type: number
-    value_format: "decimal_0"
     sql: ${TABLE}.elevation ;;
   }
 

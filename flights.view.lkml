@@ -15,7 +15,7 @@ view: flights {
   dimension: tail_num {
     hidden: yes
     type: string
-    sql: ${TABLE}.tail_num ;;
+    sql: ${TABLE}.tail_num;;
   }
 
   dimension: flight_num {
