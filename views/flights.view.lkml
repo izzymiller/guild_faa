@@ -1,5 +1,6 @@
-view: ontime {
-  sql_table_name: faa.ontime ;;
+view: flights {
+  sql_table_name: `vert-298006.faa.flights`
+    ;;
 
   dimension: arr_delay {
     type: number
@@ -8,7 +9,15 @@ view: ontime {
 
   dimension_group: arr {
     type: time
-    timeframes: [time, date, week, month]
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.arr_time ;;
   }
 
@@ -29,7 +38,15 @@ view: ontime {
 
   dimension_group: dep {
     type: time
-    timeframes: [time, date, week, month]
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.dep_time ;;
   }
 
@@ -60,6 +77,7 @@ view: ontime {
 
   dimension: id2 {
     type: number
+    primary_key: yes
     sql: ${TABLE}.id2 ;;
   }
 
@@ -82,9 +100,22 @@ view: ontime {
     type: number
     sql: ${TABLE}.taxi_out ;;
   }
+  dimension: flight_speed {
+    type: number
+    sql: case when ${flight_time}=0 then 0 else ${distance}/${flight_time} end ;;
+  }
+  measure: med_dep_delay {
+    type: median
+    sql: ${dep_delay} ;;
+  }
+  measure: avg_taxi_out {
+    type: average
+    sql: ${taxi_out} ;;
 
+  }
   measure: count {
     type: count
     drill_fields: []
   }
+
 }
