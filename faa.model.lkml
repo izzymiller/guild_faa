@@ -2,6 +2,7 @@ connection: "sandbox"
 
 # include all the views
 include: "*.view"
+include: "/poc/*.view"
 # include: "*.dashboard"
 
 datagroup: faa_default_datagroup {
@@ -87,5 +88,7 @@ datagroup: once_yearly {
   sql_trigger: SELECT extract(year from current_date()) ;;
 }
 
-
+explore: sales_data {
+  group_label: "What if"
+}
 label: "FAA"
