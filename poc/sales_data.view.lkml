@@ -186,8 +186,78 @@ view: sales_data {
     # value_format_name: percent_2
 
   }
+  dimension: veriance_unit {
+    type: number
+    sql: ${units}+ (${units}*({% parameter diff_unit %}/100) ) ;;
+  }
+
+  dimension: sales {
+    type: number
+    sql:(${units}*${cost}) - ${TABLE}.sales  ;;
+    value_format: "$##0.00"
+  }
+
+  dimension: op_expenses {
+    type: number
+    sql: ${TABLE}.op_expenses ;;
+    value_format: "$##0.00"
+  }
+  dimension: veriance_op_expenses {
+    type: number
+    sql: ${op_expenses}+ (${op_expenses}*({% parameter diff_op_expenses %}/100) ) ;;
+  }
+
+  dimension: cogs {
+    type: number
+    sql: ${TABLE}.cogs ;;
+    value_format: "$##0.00"
+  }
+  dimension: veriance_cogs {
+    type: number
+    sql: ${cogs}+ (${cogs}*({% parameter diff_cogs %}/100) ) ;;
+  }
+  dimension: rel_Revenue {
+    type: number
+    sql: ${sales}-(${cogs}+${op_expenses}) ;;
+    value_format: "$##0.00"
+
+  }
+  dimension: Revenue {
+    type: number
+    sql: ${veriance_sales}-(${veriance_cogs}+${veriance_op_expenses}) ;;
+    value_format: "$##0.00"
+
+  }
+
+dimension: rel_sales {
+  type: number
+  sql: ${veriance_unit}*${cost} ;;
+  value_format: "$##0.00"
+}
+dimension: discount_in_number {
+  type: number
+  sql: ${veriance_discount}/100;;
+
+}
+  # dimension:  {
+  #   type: number
+  #   sql: ${veriance_discount}/100;;
+
+  # }
+dimension: discout_amount {
+  type: number
+  sql: ${rel_sales}*${discount_in_number};;
+}
+dimension: veriance_sales {
+  type: number
+  sql: ${rel_sales}-${discout_amount} ;;
+  value_format: "$##0.00"
+}
+
+
+####################### Parameteres to give the values #######################
   parameter: diff_discount {
-    label: "veriance"
+    label: "veriance in Discount"
     default_value: "0"
     allowed_value: {
       label: "Default"
@@ -203,7 +273,7 @@ view: sales_data {
       value: "10"
     }
     allowed_value: {
-      label: " ADD 10% in discount"
+      label: " ADD 15% in discount"
       value: "15"
     }allowed_value: {
       label: " ADD 20% in discount"
@@ -261,56 +331,522 @@ view: sales_data {
       label: " ADD 100% in discount"
       value: "100"
     }
+    allowed_value: {
+      label: " SUB 5% in discount"
+      value: "-5"
+    }
+    allowed_value: {
+      label: " SUB 10% in discount"
+      value: "-10"
+    }
+    allowed_value: {
+      label: " SUB 15% in discount"
+      value: "-15"
+    }allowed_value: {
+      label: " SUB 20% in discount"
+      value: "-20"
+    }allowed_value: {
+      label: " SUB 25% in discount"
+      value: "-25"
+    }allowed_value: {
+      label: " SUB 30% in discount"
+      value: "-30"
+    }allowed_value: {
+      label: " SUB 35% in discount"
+      value: "-35"
+    }
+    allowed_value: {
+      label: " SUB 40% in discount"
+      value: "-40"
+    }
+    allowed_value: {
+      label: " SUB 45% in discount"
+      value: "-45"
+    }allowed_value: {
+      label: " SUB 50% in discount"
+      value: "-50"
+    }allowed_value: {
+      label: " SUB 55% in discount"
+      value: "-55"
+    }allowed_value: {
+      label: " SUB 60% in discount"
+      value: "-60"
+    }allowed_value: {
+      label: " SUB 65% in discount"
+      value: "-65"
+    }
+    allowed_value: {
+      label: " SUB 70% in discount"
+      value: "-70"
+    }allowed_value: {
+      label: " SUB 75% in discount"
+      value: "-75"
+    }allowed_value: {
+      label: " SUB 80% in discount"
+      value: "-80"
+    }allowed_value: {
+      label: " SUB 85% in discount"
+      value: "-85"
+    }
+    allowed_value: {
+      label: " SUB 90% in discount"
+      value: "-90"
+    }allowed_value: {
+      label: " SUB 95% in discount"
+      value: "-95"
+    }allowed_value: {
+      label: " SUB 100% in discount"
+      value: "-100"
+    }
   }
 
-  dimension: sales {
+  parameter: diff_unit {
+    label: "veriance in Unit by %"
+    default_value: "0"
+    allowed_value: {
+      label: "Default"
+      value: "0"
+    }
     type: number
-    sql: ${TABLE}.sales ;;
-    value_format: "$##0.00"
+    allowed_value: {
+      label: " ADD 5% in unit %"
+      value: "5"
+    }
+    allowed_value: {
+      label: " ADD 10% in unit %"
+      value: "10"
+    }
+    allowed_value: {
+      label: " ADD 15% in unit %"
+      value: "15"
+    }allowed_value: {
+      label: " ADD 20% in unit %"
+      value: "20"
+    }allowed_value: {
+      label: " ADD 25% in unit %"
+      value: "25"
+    }allowed_value: {
+      label: " ADD 30% in unit %"
+      value: "30"
+    }allowed_value: {
+      label: " ADD 35% in unit %"
+      value: "35"
+    }
+    allowed_value: {
+      label: " ADD 40% in unit %"
+      value: "40"
+    }
+    allowed_value: {
+      label: " ADD 45% in unit %"
+      value: "45"
+    }allowed_value: {
+      label: " ADD 50% in unit %"
+      value: "50"
+    }allowed_value: {
+      label: " ADD 55% in unit %"
+      value: "55"
+    }allowed_value: {
+      label: " ADD 60% in unit %"
+      value: "60"
+    }allowed_value: {
+      label: " ADD 65% in unit %"
+      value: "65"
+    }
+    allowed_value: {
+      label: " ADD 70% in unit %"
+      value: "70"
+    }allowed_value: {
+      label: " ADD 75% in unit %"
+      value: "75"
+    }allowed_value: {
+      label: " ADD 80% in unit %"
+      value: "80"
+    }allowed_value: {
+      label: " ADD 85% in unit %"
+      value: "85"
+    }
+    allowed_value: {
+      label: " ADD 90% in unit %"
+      value: "90"
+    }allowed_value: {
+      label: " ADD 95% in unit %"
+      value: "95"
+    }allowed_value: {
+      label: " ADD 100% in unit %"
+      value: "100"
+    }
+    allowed_value: {
+      label: " SUB 5% in unit %"
+      value: "-5"
+    }
+    allowed_value: {
+      label: " SUB 10% in unit %"
+      value: "-10"
+    }
+    allowed_value: {
+      label: " SUB 15% in unit %"
+      value: "-15"
+    }allowed_value: {
+      label: " SUB 20% in unit %"
+      value: "-20"
+    }allowed_value: {
+      label: " SUB 25% in unit %"
+      value: "-25"
+    }allowed_value: {
+      label: " SUB 30% in unit %"
+      value: "-30"
+    }allowed_value: {
+      label: " SUB 35% in unit %"
+      value: "-35"
+    }
+    allowed_value: {
+      label: " SUB 40% in unit %"
+      value: "-40"
+    }
+    allowed_value: {
+      label: " SUB 45% in unit %"
+      value: "-45"
+    }allowed_value: {
+      label: " SUB 50% in unit %"
+      value: "-50"
+    }allowed_value: {
+      label: " SUB 55% in unit %"
+      value: "-55"
+    }allowed_value: {
+      label: " SUB 60% in unit %"
+      value: "-60"
+    }allowed_value: {
+      label: " SUB 65% in unit %"
+      value: "-65"
+    }
+    allowed_value: {
+      label: " SUB 70% in unit %"
+      value: "-70"
+    }allowed_value: {
+      label: " SUB 75% in unit %"
+      value: "-75"
+    }allowed_value: {
+      label: " SUB 80% in unit %"
+      value: "-80"
+    }allowed_value: {
+      label: " SUB 85% in unit %"
+      value: "-85"
+    }
+    allowed_value: {
+      label: " SUB 90% in unit %"
+      value: "-90"
+    }allowed_value: {
+      label: " SUB 95% in unit %"
+      value: "-95"
+    }allowed_value: {
+      label: " SUB 100% in unit %"
+      value: "-100"
+    }
   }
 
-  dimension: op_expenses {
+  parameter: diff_cogs {
+    label: "veriance in cogs %"
+    default_value: "0"
+    allowed_value: {
+      label: "Default"
+      value: "0"
+    }
     type: number
-    sql: ${TABLE}.op_expenses ;;
-    value_format: "$##0.00"
+    allowed_value: {
+      label: " ADD 5% in cogs %"
+      value: "5"
+    }
+    allowed_value: {
+      label: " ADD 10% in cogs %"
+      value: "10"
+    }
+    allowed_value: {
+      label: " ADD 15% in cogs %"
+      value: "15"
+    }allowed_value: {
+      label: " ADD 20% in cogs %"
+      value: "20"
+    }allowed_value: {
+      label: " ADD 25% in cogs %"
+      value: "25"
+    }allowed_value: {
+      label: " ADD 30% in cogs %"
+      value: "30"
+    }allowed_value: {
+      label: " ADD 35% in cogs %"
+      value: "35"
+    }
+    allowed_value: {
+      label: " ADD 40% in cogs %"
+      value: "40"
+    }
+    allowed_value: {
+      label: " ADD 45% in cogs %"
+      value: "45"
+    }allowed_value: {
+      label: " ADD 50% in cogs %"
+      value: "50"
+    }allowed_value: {
+      label: " ADD 55% in cogs %"
+      value: "55"
+    }allowed_value: {
+      label: " ADD 60% in cogs %"
+      value: "60"
+    }allowed_value: {
+      label: " ADD 65% in cogs %"
+      value: "65"
+    }
+    allowed_value: {
+      label: " ADD 70% in cogs %"
+      value: "70"
+    }allowed_value: {
+      label: " ADD 75% in cogs %"
+      value: "75"
+    }allowed_value: {
+      label: " ADD 80% in cogs %"
+      value: "80"
+    }allowed_value: {
+      label: " ADD 85% in cogs %"
+      value: "85"
+    }
+    allowed_value: {
+      label: " ADD 90% in cogs %"
+      value: "90"
+    }allowed_value: {
+      label: " ADD 95% in cogs %"
+      value: "95"
+    }allowed_value: {
+      label: " ADD 100% in cogs %"
+      value: "100"
+    }
+    allowed_value: {
+      label: " SUB 5% in cogs %"
+      value: "-5"
+    }
+    allowed_value: {
+      label: " SUB 10% in cogs %"
+      value: "-10"
+    }
+    allowed_value: {
+      label: " SUB 15% in cogs %"
+      value: "-15"
+    }allowed_value: {
+      label: " SUB 20% in cogs %"
+      value: "-20"
+    }allowed_value: {
+      label: " SUB 25% in cogs %"
+      value: "-25"
+    }allowed_value: {
+      label: " SUB 30% in cogs %"
+      value: "-30"
+    }allowed_value: {
+      label: " SUB 35% in cogs %"
+      value: "-35"
+    }
+    allowed_value: {
+      label: " SUB 40% in cogs %"
+      value: "-40"
+    }
+    allowed_value: {
+      label: " SUB 45% in cogs %"
+      value: "-45"
+    }allowed_value: {
+      label: " SUB 50% in cogs %"
+      value: "-50"
+    }allowed_value: {
+      label: " SUB 55% in cogs %"
+      value: "-55"
+    }allowed_value: {
+      label: " SUB 60% in cogs %"
+      value: "-60"
+    }allowed_value: {
+      label: " SUB 65% in cogs %"
+      value: "-65"
+    }
+    allowed_value: {
+      label: " SUB 70% in cogs %"
+      value: "-70"
+    }allowed_value: {
+      label: " SUB 75% in cogs %"
+      value: "-75"
+    }allowed_value: {
+      label: " SUB 80% in cogs %"
+      value: "-80"
+    }allowed_value: {
+      label: " SUB 85% in cogs %"
+      value: "-85"
+    }
+    allowed_value: {
+      label: " SUB 90% in cogs %"
+      value: "-90"
+    }allowed_value: {
+      label: " SUB 95% in cogs %"
+      value: "-95"
+    }allowed_value: {
+      label: " SUB 100% in cogs %"
+      value: "-100"
+    }
   }
 
-  dimension: cogs {
+  parameter: diff_op_expenses {
+    label: "veriance in op_expenses by %"
+    default_value: "0"
+    allowed_value: {
+      label: "Default"
+      value: "0"
+    }
     type: number
-    sql: ${TABLE}.cogs ;;
-    value_format: "$##0.00"
+    allowed_value: {
+      label: " ADD 5% in op_expenses %"
+      value: "5"
+    }
+    allowed_value: {
+      label: " ADD 10% in op_expenses %"
+      value: "10"
+    }
+    allowed_value: {
+      label: " ADD 15% in op_expenses %"
+      value: "15"
+    }allowed_value: {
+      label: " ADD 20% in op_expenses %"
+      value: "20"
+    }allowed_value: {
+      label: " ADD 25% in op_expenses %"
+      value: "25"
+    }allowed_value: {
+      label: " ADD 30% in op_expenses %"
+      value: "30"
+    }allowed_value: {
+      label: " ADD 35% in op_expenses %"
+      value: "35"
+    }
+    allowed_value: {
+      label: " ADD 40% in op_expenses %"
+      value: "40"
+    }
+    allowed_value: {
+      label: " ADD 45% in op_expenses %"
+      value: "45"
+    }allowed_value: {
+      label: " ADD 50% in op_expenses %"
+      value: "50"
+    }allowed_value: {
+      label: " ADD 55% in op_expenses %"
+      value: "55"
+    }allowed_value: {
+      label: " ADD 60% in op_expenses %"
+      value: "60"
+    }allowed_value: {
+      label: " ADD 65% in op_expenses %"
+      value: "65"
+    }
+    allowed_value: {
+      label: " ADD 70% in op_expenses %"
+      value: "70"
+    }allowed_value: {
+      label: " ADD 75% in op_expenses %"
+      value: "75"
+    }allowed_value: {
+      label: " ADD 80% in op_expenses %"
+      value: "80"
+    }allowed_value: {
+      label: " ADD 85% in op_expenses %"
+      value: "85"
+    }
+    allowed_value: {
+      label: " ADD 90% in op_expenses %"
+      value: "90"
+    }allowed_value: {
+      label: " ADD 95% in op_expenses %"
+      value: "95"
+    }allowed_value: {
+      label: " ADD 100% in op_expenses %"
+      value: "100"
+    }
+    allowed_value: {
+      label: " SUB 5% in op_expenses %"
+      value: "-5"
+    }
+    allowed_value: {
+      label: " SUB 10% in op_expenses %"
+      value: "-10"
+    }
+    allowed_value: {
+      label: " SUB 15% in op_expenses %"
+      value: "-15"
+    }allowed_value: {
+      label: " SUB 20% in op_expenses %"
+      value: "-20"
+    }allowed_value: {
+      label: " SUB 25% in op_expenses %"
+      value: "-25"
+    }allowed_value: {
+      label: " SUB 30% in op_expenses %"
+      value: "-30"
+    }allowed_value: {
+      label: " SUB 35% in op_expenses %"
+      value: "-35"
+    }
+    allowed_value: {
+      label: " SUB 40% in op_expenses %"
+      value: "-40"
+    }
+    allowed_value: {
+      label: " SUB 45% in op_expenses %"
+      value: "-45"
+    }allowed_value: {
+      label: " SUB 50% in op_expenses %"
+      value: "-50"
+    }allowed_value: {
+      label: " SUB 55% in op_expenses %"
+      value: "-55"
+    }allowed_value: {
+      label: " SUB 60% in op_expenses %"
+      value: "-60"
+    }allowed_value: {
+      label: " SUB 65% in op_expenses %"
+      value: "-65"
+    }
+    allowed_value: {
+      label: " SUB 70% in op_expenses %"
+      value: "-70"
+    }allowed_value: {
+      label: " SUB 75% in op_expenses %"
+      value: "-75"
+    }allowed_value: {
+      label: " SUB 80% in op_expenses %"
+      value: "-80"
+    }allowed_value: {
+      label: " SUB 85% in op_expenses %"
+      value: "-85"
+    }
+    allowed_value: {
+      label: " SUB 90% in op_expenses %"
+      value: "-90"
+    }allowed_value: {
+      label: " SUB 95% in op_expenses %"
+      value: "-95"
+    }allowed_value: {
+      label: " SUB 100% in op_expenses %"
+      value: "-100"
+    }
   }
 
-  dimension: revenu {
-    type: number
-    sql: ${sales}-(${cogs}+${op_expenses}) ;;
-    value_format: "$##0.00"
 
-  }
 
-dimension: rel_sales {
-  type: number
-  sql: ${units}*${cost} ;;
-  value_format: "$##0.00"
-}
-dimension: discount_in_number {
-  type: number
-  sql: ${veriance_discount}/100;;
 
-}
-dimension: discout_amount {
-  type: number
-  sql: ${rel_sales}*${discount_in_number};;
-}
-dimension: veriance_sales {
-  type: number
-  sql: ${rel_sales}-${discout_amount} ;;
-  value_format: "$##0.00"
-}
-  measure: sum_sales {
+
+ measure: sum_sales {
     type: sum
     sql: ${sales} ;;
     label: "over all sales"
+    group_label: "MEASURES"
+    value_format: "$##0.00"
+  }
+  measure: Veriance_sales {
+    type: sum
+    sql: ${veriance_sales} ;;
+    label: "Variance Sales"
     group_label: "MEASURES"
     value_format: "$##0.00"
   }
@@ -323,22 +859,42 @@ dimension: veriance_sales {
     group_label: "MEASURES"
     value_format: "$##0.00"
   }
+  measure: ver_sum_op_expenses {
+    type: sum
+    sql: ${veriance_op_expenses} ;;
+    label: "veriance op_expenses"
+    description: "operating expenses"
+    group_label: "MEASURES"
+    value_format: "$##0.00"
+  }
 
 
   measure: sum_cog {
     type: sum
     sql: ${cogs} ;;
     label: "over all cogs"
-    description: "cost of goods sold"
     group_label: "MEASURES"
     value_format: "$##0.00"
   }
 
-  measure: sum_revenu {
+  measure: ver_sum_cog {
     type: sum
-    sql: ${revenu} ;;
-    label: "over all Revenu"
-    description: "cost of goods sold"
+    sql: ${veriance_cogs} ;;
+    label: "Veriance all cogs"
+    group_label: "MEASURES"
+    value_format: "$##0.00"
+  }
+  measure: sum_Revenue {
+    type: sum
+    sql: ${Revenue} ;;
+    label: "Variance all Revenue"
+    group_label: "MEASURES"
+    value_format: "$##0.00"
+  }
+  measure: sum_rel_Revenue {
+    type: sum
+    sql: ${rel_Revenue} ;;
+    label: "real all Revenue"
     group_label: "MEASURES"
     value_format: "$##0.00"
   }
