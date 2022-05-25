@@ -3,6 +3,8 @@ connection: "sandbox"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
+include: "/Jerome_Training/*lkml"
+include: "/Jerome_Training/Views/*.view"
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
