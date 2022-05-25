@@ -1,6 +1,9 @@
 view: accidents {
-  sql_table_name: public.accidents ;;
+  sql_table_name: `vert-298006.faa.accidents`;;
 
+ set: aircraft_detail{
+   fields: [id,air_carrier,aircraft_category,aircraft_damage]
+ }
   dimension: id {
     primary_key: yes
     hidden: yes
@@ -11,6 +14,7 @@ view: accidents {
   dimension: accident_number {
     type: string
     sql: ${TABLE}.accident_number ;;
+    drill_fields: [id,air_carrier,aircraft_detail*]
   }
 
   dimension: air_carrier {
@@ -123,11 +127,11 @@ view: accidents {
     sql: ${TABLE}.model ;;
   }
 
-  dimension: number_of_engines {
-    type: number
-    value_format_name: decimal_0
-    sql: ${TABLE}.number_of_engines ;;
-  }
+  # dimension: number_of_engines {
+  #   type: number
+  #   value_format_name: decimal_0
+  #   sql: ${TABLE}.number_of_engines ;;
+  # }
 
   dimension: number_of_fatalities {
     type: number
@@ -135,23 +139,23 @@ view: accidents {
     sql: ${TABLE}.number_of_fatalities ;;
   }
 
-  dimension: number_of_minor_injuries {
-    type: number
-    value_format_name: decimal_0
-    sql: ${TABLE}.number_of_minor_injuries ;;
-  }
+  # dimension: number_of_minor_injuries {
+  #   type: number
+  #   value_format_name: decimal_0
+  #   sql: ${TABLE}.number_of_minor_injuries ;;
+  # }
 
-  dimension: number_of_serious_injuries {
-    type: number
-    value_format_name: decimal_0
-    sql: ${TABLE}.number_of_serious_injuries ;;
-  }
+  # dimension: number_of_serious_injuries {
+  #   type: number
+  #   value_format_name: decimal_0
+  #   sql: ${TABLE}.number_of_serious_injuries ;;
+  # }
 
-  dimension: number_of_uninjured {
-    type: number
-    value_format_name: decimal_0
-    sql: ${TABLE}.number_of_uninjured ;;
-  }
+  # dimension: number_of_uninjured {
+  #   type: number
+  #   value_format_name: decimal_0
+  #   sql: ${TABLE}.number_of_uninjured ;;
+  # }
 
   dimension_group: publication {
     type: time
@@ -209,7 +213,7 @@ view: accidents {
   }
 
   measure: total_number_of_fatalities {
-    type: sum
+    type: number
     value_format_name: decimal_0
     sql: ${number_of_fatalities} ;;
   }
@@ -217,28 +221,28 @@ view: accidents {
   measure: total_number_of_minor_injuries {
     type: sum
     value_format_name: decimal_0
-    sql: ${number_of_minor_injuries} ;;
+    sql: ${TABLE}.number_of_minor_injuries ;;
   }
 
   measure: total_number_of_serious_injuries {
     type: sum
     value_format_name: decimal_0
-    sql: ${number_of_serious_injuries} ;;
+    sql: ${TABLE}.number_of_serious_injuries ;;
   }
 
   measure: total_number_of_uninjured {
     type: sum
     value_format_name: decimal_0
-    sql: ${number_of_uninjured} ;;
+    sql: ${TABLE}.number_of_uninjured ;;
   }
 
-  dimension: number_injured {
+  measure: number_injured {
     type: number
-    sql: (${number_of_uninjured}+${number_of_fatalities}+${number_of_minor_injuries}+${number_of_serious_injuries}) ;;
+    sql: (${total_number_of_uninjured}+${total_number_of_uninjured}+${total_number_of_fatalities}+${total_number_of_minor_injuries}+${total_number_of_serious_injuries}) ;;
   }
 
   measure: total_number_injured {
-    type: sum
+    type: number
     sql: ${number_injured} ;;
   }
 

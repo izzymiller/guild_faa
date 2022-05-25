@@ -4,6 +4,8 @@ connection: "sandbox"
 include: "*.view"
 # include: "*.dashboard"
 
+include: "/Explores/*.lkml"
+include: "/Views/*.view.*"
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
