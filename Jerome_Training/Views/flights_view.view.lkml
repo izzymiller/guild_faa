@@ -32,7 +32,7 @@ view: flights_view {
 
   #Measures
   measure: distance {
-    type: number
+    type: sum
     label: "Distance"
     sql: ${TABLE}.distance ;;
   }
@@ -40,6 +40,7 @@ view: flights_view {
 
 # Commenting: Ctrl+?
 # Multi-line commenting: Select the lines and Ctrl+?
+# If there are duplicates in your view, mark a unique column as a primary key OR use sum_distinct (more costly)
 
 # view: flights_view {
 #   # Or, you could make this view a derived table, like this:
