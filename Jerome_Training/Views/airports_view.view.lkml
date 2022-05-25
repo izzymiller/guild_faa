@@ -3,6 +3,11 @@ view: airports_view {
     ;;
   drill_fields: [id]
 
+  # Sets allow only certain fields to be passed. look at associated lkml
+  set: airport_demographic {
+    fields: [full_name, elevation, city, county, act_date]
+  }
+
   dimension: id {
     primary_key: yes
     type: number
