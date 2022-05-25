@@ -35,7 +35,7 @@ view: flights_new {
     # hidden: no
   }
   measure: distance {
-    type: number
+    type: sum
     label: "Distance"
     sql: ${TABLE}.distance ;;
   }
