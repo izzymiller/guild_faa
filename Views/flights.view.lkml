@@ -124,6 +124,7 @@
     sql: 1.0 * ${count_delayed_flights} / nullif(${flight_count},0) ;;
     value_format_name: percent_2
     drill_fields: [drill*]
+    hidden: yes
   }
 
   measure: percent_flights_delayed {
@@ -138,6 +139,7 @@
       icon_url: "http://www.looker.com/favicon.ico"
     }
     drill_fields: [drill*]
+    hidden: yes
   }
 
   #####################
