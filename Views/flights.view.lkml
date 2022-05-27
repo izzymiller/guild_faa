@@ -1,4 +1,6 @@
-view: flights {
+#include: "/ontime.view.*"
+
+ view: flights_test {
   sql_table_name: faa.flights ;;
 
   #####################
@@ -106,7 +108,7 @@ view: flights {
       label: "Drill view"
       url: "https://kitchentablesandbox.cloud.looker.com/dashboards-next/5622"
     }
-    }
+  }
 
   measure: count_delayed_flights {
     type: count
@@ -267,5 +269,4 @@ view: flights {
     description: "Only users with sufficient permissions will see this data"
     sql:TO_BASE64(SHA1(${pilot_ssn})) ;;
   }
-
 }

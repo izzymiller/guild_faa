@@ -1,4 +1,5 @@
 view: ontime {
+  extension: required
   sql_table_name: faa.ontime ;;
 
   dimension: arr_delay {

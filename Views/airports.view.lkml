@@ -125,6 +125,16 @@ view: airports_new {
     type: string
     sql: ${TABLE}.mil_rts ;;
   }
+# dimension: location {
+#   type: location
+#   label: "Location of Airport"
+#   sql_longitude: ${longitude} ;;
+#   sql_latitude: ${latitude} ;;
+# }
+# dimension: distance_between {
+#   type: distance
+#   sql_start:  ;;
+# }
 
   dimension: own_type {
     type: string
