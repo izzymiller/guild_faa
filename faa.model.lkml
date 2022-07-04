@@ -1,91 +1,130 @@
 connection: "sandbox"
-
+include: "/Home_Appliance/home_app.explore.lkml"
 # include all the views
 include: "*.view"
 # include: "*.dashboard"
+#include: "/HOME_Appliance/*.view"
 
 datagroup: faa_default_datagroup {
   sql_trigger: SELECT 1;;
 #   max_cache_age: "1 hour"
 }
-
+explore: cycles {}
 persist_with: faa_default_datagroup
 
-explore: flights {
-  view_name: flights
-  view_label: "Flights"
-
-  sql_always_where: ${minutes_flight_length} > 0 and ${minutes_flight_length} < 2000 AND ${aircraft.year_built_raw} != 0;;
-
-  join: origin {
-    from: airports
-    relationship: many_to_one
-    sql_on: ${flights.origin} = ${origin.code} ;;
-  }
-
-  join: destination {
-    from: airports
-    relationship: many_to_one
-    sql_on: ${flights.destination} = ${destination.code} ;;
-  }
-
-  join: carriers  {
-    relationship: many_to_one
-    sql_on: ${flights.carrier} = ${carriers.code} ;;
-  }
-
-  join: aircraft {
+explore: product_wise_profit {
+  join: product_details {
     type: left_outer
-    sql_on: ${flights.tail_num} = ${aircraft.tail_num} ;;
+    sql_on: ${product_wise_profit.product_id}=${product_details.product_id} ;;
+    relationship: one_to_one
+  }
+  join: brand_detail {
+    type: left_outer
+    sql_on: ${product_details.brand_id}=${brand_detail.brand_id} ;;
     relationship: many_to_one
   }
 
-  # join: aircraft_flight_facts {
-  #   type: left_outer
-  #   sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
-  #   relationship: one_to_one
-  #   }
-
-  join: summary_airport {
-    view_label: "Flights"
+}
+ explore: inventory_detail {
+   join: product_details {
+     type: left_outer
+    sql_on: ${inventory_detail.product_id}=${product_details.product_id} ;;
     relationship: many_to_one
-    sql_on: ${flights.origin} = ${summary_airport.origin} ;;
+   }join: brand_detail {
+     type: left_outer
+    sql_on: ${product_details.brand_id}=${brand_detail.brand_id} ;;
+    relationship: many_to_one
+   }
+  join: branch_details {
+    type: left_outer
+    sql_on: ${inventory_detail.branch_id}=${branch_details.branch_id} ;;
+    relationship: many_to_one
   }
+  }
+   explore: sales_02 {
+     join: product_details {
+       type: left_outer
+      sql_on: ${sales_02.product_id}=${product_details.product_id} ;;
+      relationship: many_to_one
 
-    join: aircraft_models {
-      sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
+     }
+    join: inventory_detail {
+      type: inner
+      sql_on: ${product_details.product_id}=${inventory_detail.product_id} ;;
+      relationship: one_to_many
+    }
+    join: branch_details {
+      type: left_outer
+      sql_on: ${sales_02.branch_id}=${branch_details.branch_id} ;;
       relationship: many_to_one
     }
+    join: brand_detail {
+      type: left_outer
+      sql_on: ${product_details.brand_id}=${brand_detail.brand_id} ;;
+      relationship: many_to_one
+    }
+   }
+explore: sales_01{
+join: branch_details{
+  type: left_outer
+  sql_on: ${sales_01.branch_id}=${branch_details.branch_id} ;;
+  relationship: many_to_one
+}
+join: product_details {
+  type: left_outer
+  sql_on: ${product_details.product_id}=${sales_01.product_id} ;;
+  relationship: many_to_one
+}
+}
+explore: product_details {}
+
+explore: calendar {
+  join: sales_01 {
+    type: left_outer
+    sql_on: ${calendar.date_date}=${sales_01.date} ;;
+    relationship: one_to_many
+  }
+}
+explore: customer_details {
+  join: branch_details {
+    type: left_outer
+    sql_on: ${customer_details.branch_id}=${branch_details.branch_id} ;;
+    relationship: many_to_one
+  }
+}
+explore: employee_details {
+  join: branch_details {
+    type: left_outer
+    sql_on: ${employee_details.branch_id}=${branch_details.branch_id} ;;
+    relationship: many_to_one
+  }
+}
+explore: product_wise_salescount {}
+explore: top_5_branch {
+  join: branch_details {
+    relationship: many_to_one
+    sql_on: ${top_5_branch.branch_id} = ${branch_details.branch_id} ;;
+  }
+
+  }
+explore: top_5_product {
+  join: product_details {
+    relationship: many_to_one
+    sql_on: ${top_5_product.product_id}= ${product_details.product_id} ;;
+  }
+  join: brand_detail {
+    type: left_outer
+    sql_on: ${product_details.brand_id}=${brand_detail.brand_id} ;;
+    relationship: many_to_one
+  }
+}
+explore: Top_selling_branch {
 
 }
-
-
-
-### Caching Logic
-
-persist_with: once_weekly
-
-### PDT Timeframes
-
-datagroup: once_daily {
-  max_cache_age: "24 hours"
-  sql_trigger: SELECT current_date() ;;
-}
-
-datagroup: once_weekly {
-  max_cache_age: "168 hours"
-  sql_trigger: SELECT extract(week from current_date()) ;;
-}
-
-datagroup: once_monthly {
-  max_cache_age: "720 hours"
-  sql_trigger: SELECT extract(month from current_date()) ;;
-}
-
-datagroup: once_yearly {
-  max_cache_age: "9000 hours"
-  sql_trigger: SELECT extract(year from current_date()) ;;
-}
-
-
-label: "FAA"
+explore: television {}
+explore: top_selling_category {
+  join: product_details {
+      type: left_outer
+      sql_on: ${top_selling_category.category}=${product_details.category};;
+      relationship: one_to_many
+}}
