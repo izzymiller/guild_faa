@@ -2,6 +2,9 @@ connection: "sandbox"
 
 # include all the views
 include: "*.view"
+#include: "*.view,lkml"
+include: "/**/Fraud_Analysis/*.view.lkml"
+#include: "*"
 # include: "*.dashboard"
 
 datagroup: faa_default_datagroup {
@@ -10,6 +13,9 @@ datagroup: faa_default_datagroup {
 }
 
 persist_with: faa_default_datagroup
+explore: period_over_period {}
+
+explore: vijay {}
 
 explore: flights {
   view_name: flights
@@ -59,7 +65,29 @@ explore: flights {
 
 }
 
-
+explore: offers {
+  label: "Fraud_Detection"
+  join: users {
+  type: left_outer
+  sql_on: ${offers.user_id}=${users.user_id} ;;
+  relationship: many_to_one
+  }
+  join: cards {
+  type: left_outer
+  sql_on: ${offers.card_id}=${cards.card_id} ;;
+  relationship: many_to_one
+  }
+  join: payment_details {
+  type: left_outer
+  sql_on: ${offers.payment_id}=${payment_details.payment_id} ;;
+  relationship: many_to_one
+  }
+  join: region {
+  type: left_outer
+  sql_on: ${users.zipcode}=${region.zipcode} ;;
+  relationship: many_to_one
+  }
+}
 
 ### Caching Logic
 
@@ -86,6 +114,22 @@ datagroup: once_yearly {
   max_cache_age: "9000 hours"
   sql_trigger: SELECT extract(year from current_date()) ;;
 }
+explore: pop{}
 
-
-label: "FAA"
+explore:gross{
+join: products {
+type: left_outer
+sql_on: ${gross.producer_id}=${products.producer_id} ;;
+relationship: many_to_one
+}
+join: movie {
+type: left_outer
+sql_on: ${gross.rank_in_year}=${movie.rank_in_year} ;;
+relationship: many_to_one
+}
+join: aud_ranking {
+type: left_outer
+sql_on: ${gross.audience_score_id}=${aud_ranking.id} ;;
+relationship: many_to_one
+}
+}
